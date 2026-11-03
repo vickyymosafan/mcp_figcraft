@@ -47,3 +47,4 @@ FigCraft Live MCP integration for AI coding assistants with Figma-grade Auto-Lay
 }
 
 main().catch(console.error);
+
