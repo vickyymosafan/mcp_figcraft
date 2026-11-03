@@ -6,3 +6,4 @@ tsconfig.json
 start-figcraft-live.cmd
 test-live-generation.cjs
 *.log
+

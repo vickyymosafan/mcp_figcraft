@@ -8,9 +8,19 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     version: '1.0.0'
   });
 
+  const registerWithAliases = (
+    names: string[],
+    config: { description: string; inputSchema: z.ZodObject<any> },
+    handler: (args: any) => Promise<any>
+  ) => {
+    for (const name of names) {
+      server.registerTool(name, config, handler);
+    }
+  };
+
   // Tool 1: Core 1-by-1 Flow: Create file with name and immediately auto-open in FigCraft GUI
-  server.registerTool(
-    'figcraft_create_and_open',
+  registerWithAliases(
+    ['figcraft_create_and_open', 'create_and_open'],
     {
       description:
         'Langkah 1 & 2 Kanonik: Buat berkas kanvas (.figcraft) beserta namanya, dan otomatis LANGSUNG buka berkas tersebut di jendela aktif FigCraft GUI di monitor user tanpa perlu user buka manual.',
@@ -41,8 +51,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 2: Open File
-  server.registerTool(
-    'figcraft_open_file',
+  registerWithAliases(
+    ['figcraft_open_file', 'open_file'],
     {
       description: 'Buka berkas desain (.figcraft, .json, .fig, .sketch, .svg, gambar) ke tab aktif di GUI FigCraft.',
       inputSchema: z.object({
@@ -71,8 +81,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 3: Create Node (Live Canvas Generation)
-  server.registerTool(
-    'figcraft_create_node',
+  registerWithAliases(
+    ['figcraft_create_node', 'create_node'],
     {
       description:
         'Langkah 3 Kanonik: Gambar elemen visual (frame, rectangle, text, ellipse, button, dll) secara LIVE langsung di kanvas yang sedang terbuka.',
@@ -112,8 +122,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 4: Set Properties
-  server.registerTool(
-    'figcraft_set_properties',
+  registerWithAliases(
+    ['figcraft_set_properties', 'set_properties'],
     {
       description: 'Ubah properti visual (fills, stroke, tipografi, corner radius, auto-layout) pada node yang ada di kanvas.',
       inputSchema: z.object({
@@ -143,8 +153,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 5: Batch Execution
-  server.registerTool(
-    'figcraft_batch',
+  registerWithAliases(
+    ['figcraft_batch', 'batch'],
     {
       description: 'Jalankan serangkaian perintah manipulasi desain FigCraft secara atomik dalam satu batch transaksi.',
       inputSchema: z.object({
@@ -180,8 +190,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 6: Inspect Document
-  server.registerTool(
-    'figcraft_inspect_document',
+  registerWithAliases(
+    ['figcraft_inspect_document', 'inspect_document'],
     {
       description: 'Inspeksi hierarki kanvas dokumen aktif: halaman, layer, frame, styling, dan bounding box.',
       inputSchema: z.object({
@@ -211,8 +221,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 7: Save File
-  server.registerTool(
-    'figcraft_save_file',
+  registerWithAliases(
+    ['figcraft_save_file', 'save_file'],
     {
       description: 'Simpan dokumen aktif di FigCraft ke disk (.figcraft).',
       inputSchema: z.object({
@@ -241,8 +251,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 8: Screenshot / Export
-  server.registerTool(
-    'figcraft_screenshot',
+  registerWithAliases(
+    ['figcraft_screenshot', 'screenshot'],
     {
       description: 'Ambil snapshot visual kanvas aktif atau frame tertentu dalam format PNG.',
       inputSchema: z.object({
@@ -272,8 +282,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
   );
 
   // Tool 9: Ensure GUI Live Window
-  server.registerTool(
-    'figcraft_ensure_gui',
+  registerWithAliases(
+    ['figcraft_ensure_gui', 'ensure_gui'],
     {
       description: 'Pastikan FigCraft GUI berjalan aktif dengan jendela interaktif di monitor pengguna pada port kontrol 9099.',
       inputSchema: z.object({})

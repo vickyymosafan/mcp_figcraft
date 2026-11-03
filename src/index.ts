@@ -26,3 +26,4 @@ if (process.env.NODE_ENV !== 'test' && !process.env.FIGCRAFT_MCP_NO_AUTO_START) 
     process.exit(1);
   });
 }
+

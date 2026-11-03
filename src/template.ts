@@ -69,3 +69,4 @@ export function createCanonicalFigCraftFile(filePath: string, projectName: strin
 
   return resolved;
 }
+

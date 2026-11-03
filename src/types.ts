@@ -62,3 +62,4 @@ export interface DocumentSummary {
   dirty?: boolean;
   colorProfile?: string;
 }
+
