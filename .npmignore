@@ -1,0 +1,8 @@
+src/
+scratch/
+test-ui/
+.harness/
+tsconfig.json
+start-figcraft-live.cmd
+test-live-generation.cjs
+*.log

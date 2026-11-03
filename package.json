@@ -1,0 +1,57 @@
+{
+  "name": "figcraft-mcp",
+  "version": "1.0.0",
+  "description": "Official & Open-Source Model Context Protocol (MCP) server for FigCraft: Automated file creation, instant GUI window opening, and transparent live UI/UX canvas generation.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "figcraft-mcp": "./bin/figcraft-mcp.js"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "figcraft",
+    "figma",
+    "ui-ux",
+    "live-canvas",
+    "antigravity",
+    "claude-desktop",
+    "cursor",
+    "generative-ui",
+    "agentic-coding"
+  ],
+  "author": "Vicky Mosafan <vickymosafan@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vickymosafan/figcraft-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vickymosafan/figcraft-mcp/issues"
+  },
+  "homepage": "https://github.com/vickymosafan/figcraft-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,469 @@
+{
+  "runId": "c16984af-903b-4dd0-a94a-29835bf2fd65",
+  "baseUrl": "http://127.0.0.1:3456/",
+  "startedAt": "2026-11-03T05:34:28.772Z",
+  "finishedAt": "2026-11-03T05:35:33.446Z",
+  "routeCount": 1,
+  "viewportCount": 13,
+  "totalCases": 13,
+  "passedCases": 8,
+  "failedCases": 5,
+  "overallStatus": "fail",
+  "results": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "small-mobile-320",
+        "width": 320,
+        "height": 740,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 414,
+      "viewportWidth": 414,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\small-mobile-320\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-360",
+        "width": 360,
+        "height": 800,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 415,
+      "viewportWidth": 415,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\mobile-360\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-375",
+        "width": 375,
+        "height": 812,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 414,
+      "viewportWidth": 414,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\mobile-375\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-390",
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 414,
+      "viewportWidth": 414,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\mobile-390\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-414",
+        "width": 414,
+        "height": 896,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 414,
+      "viewportWidth": 414,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 289,
+          "right": 429,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-mint",
+          "left": 289,
+          "right": 429,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-coral",
+          "left": 289,
+          "right": 429,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 289,
+          "right": 429,
+          "width": 140
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\mobile-414\\full-page.png",
+      "passed": false,
+      "issues": [
+        "4 visible element(s) extend beyond the viewport bounds."
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "large-mobile-430",
+        "width": 430,
+        "height": 932,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 430,
+      "viewportWidth": 430,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 305,
+          "right": 445,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-mint",
+          "left": 305,
+          "right": 445,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-coral",
+          "left": 305,
+          "right": 445,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 305,
+          "right": 445,
+          "width": 140
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\large-mobile-430\\full-page.png",
+      "passed": false,
+      "issues": [
+        "4 visible element(s) extend beyond the viewport bounds."
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "tablet-768-portrait",
+        "width": 768,
+        "height": 1024,
+        "isMobile": false,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 891,
+      "viewportWidth": 768,
+      "horizontalOverflow": 123,
+      "overflowElements": [],
+      "outOfBoundsElements": [
+        {
+          "selector": "div.header-actions",
+          "left": 659,
+          "right": 891,
+          "width": 232
+        },
+        {
+          "selector": "a.btn.btn-primary",
+          "left": 775,
+          "right": 891,
+          "width": 117
+        },
+        {
+          "selector": "span",
+          "left": 796,
+          "right": 852,
+          "width": 56
+        },
+        {
+          "selector": "svg",
+          "left": 860,
+          "right": 870,
+          "width": 11
+        },
+        {
+          "selector": "path",
+          "left": 862,
+          "right": 868,
+          "width": 6
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 643,
+          "right": 783,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-coral",
+          "left": 643,
+          "right": 783,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 643,
+          "right": 783,
+          "width": 140
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\tablet-768-portrait\\full-page.png",
+      "passed": false,
+      "issues": [
+        "Document has 123px horizontal overflow.",
+        "8 visible element(s) extend beyond the viewport bounds."
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "mobile-844-landscape",
+        "width": 844,
+        "height": 390,
+        "isMobile": true,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 891,
+      "viewportWidth": 891,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\mobile-844-landscape\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "tablet-1024-landscape",
+        "width": 1024,
+        "height": 768,
+        "isMobile": false,
+        "hasTouch": true,
+        "deviceScaleFactor": 2
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 1024,
+      "viewportWidth": 1024,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 899,
+          "right": 1039,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-coral",
+          "left": 899,
+          "right": 1039,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 899,
+          "right": 1039,
+          "width": 140
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\tablet-1024-landscape\\full-page.png",
+      "passed": false,
+      "issues": [
+        "3 visible element(s) extend beyond the viewport bounds."
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "laptop-1280",
+        "width": 1280,
+        "height": 800,
+        "isMobile": false,
+        "hasTouch": false,
+        "deviceScaleFactor": 1
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 1280,
+      "viewportWidth": 1280,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [
+        {
+          "selector": "div.card-glow.glow-mint",
+          "left": 1155,
+          "right": 1295,
+          "width": 140
+        },
+        {
+          "selector": "div.card-glow.glow-lavender",
+          "left": 1155,
+          "right": 1295,
+          "width": 140
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\laptop-1280\\full-page.png",
+      "passed": false,
+      "issues": [
+        "2 visible element(s) extend beyond the viewport bounds."
+      ]
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "laptop-1366",
+        "width": 1366,
+        "height": 768,
+        "isMobile": false,
+        "hasTouch": false,
+        "deviceScaleFactor": 1
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 1366,
+      "viewportWidth": 1366,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\laptop-1366\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "desktop-1440",
+        "width": 1440,
+        "height": 900,
+        "isMobile": false,
+        "hasTouch": false,
+        "deviceScaleFactor": 1
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\desktop-1440\\full-page.png",
+      "passed": true,
+      "issues": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "wide-desktop-1920",
+        "width": 1920,
+        "height": 1080,
+        "isMobile": false,
+        "hasTouch": false,
+        "deviceScaleFactor": 1
+      },
+      "finalUrl": "http://127.0.0.1:3456/",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "horizontalOverflow": 0,
+      "overflowElements": [],
+      "outOfBoundsElements": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\page\\wide-desktop-1920\\full-page.png",
+      "passed": true,
+      "issues": []
+    }
+  ],
+  "reportPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\responsive-report.json"
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.log
+.temp/
+scratch/
+test-ui/ux/*.figcraft
+.DS_Store
+Thumbs.db

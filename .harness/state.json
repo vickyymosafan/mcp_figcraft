@@ -1,0 +1,2140 @@
+{
+  "schemaVersion": 1,
+  "plans": {
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "UI/UX Company Profile Perusahaan Manufaktur Modern (FigCraft & Harness)",
+      "request": "Buat UI/UX Company Profile modern, premium, dan komprehensif untuk perusahaan manufaktur presisi tinggi (Precision Engineering & Smart Manufacturing - PT Tridaya Presisi Manufaktur) di test-ui. Desain mencakup: Navigation Bar, Hero Section dengan statistik pabrik & video showcase mockup, About & Capabilities, Interactive Facility/Factory Tour & Production Lines, Interactive Product & Precision Machinery Catalog, Smart Industry 4.0 IoT Dashboard showcase, Quality & Certification (ISO/AS9100), Client Trust & Sustainability, dan Footer & RFP Contact Form. Implementasikan di FigCraft menggunakan Auto Layout, typography scale, semantic color palette industrial slate-indigo-amber, komponen modular, ekspor aset SVG/PNG, simpan file .figcraft, dan sediakan live interactive web showcase di test-ui.",
+      "domains": [
+        "design",
+        "frontend",
+        "responsive"
+      ],
+      "taskIds": [
+        "10ffe120-7600-4482-abac-ab1e931511f6",
+        "caf18a9c-8e06-447b-acff-46d79fa02504",
+        "9b18e991-0466-48b9-88ec-1f1fd044d3df",
+        "9252fe89-fb88-439c-bc62-3bf197a8113d",
+        "fcf77d83-81e5-4d45-867e-da1106d6d7bd",
+        "a51f932b-700a-4673-91df-5ce4da296bdf",
+        "672ca25c-a8f5-4f5b-a358-a05e437d5d2a",
+        "3fbc0874-bb3e-43bd-a4b8-f66d6751ee1b",
+        "562e37c8-4f0d-47d3-bc73-c1ebb037008e",
+        "df3f9921-4e3b-4492-a5ae-c7d8f38cff19",
+        "33eacb6f-8169-4d1c-8226-e7b18127d587",
+        "ac556ff4-8a9e-4495-aca1-beac74f4eaca",
+        "b827ce49-5dcb-443d-b0b5-ec161ed6aecf",
+        "5e9d644f-4a95-44e1-86f9-851bdd4580c8"
+      ],
+      "checkpointIds": [
+        "responsive",
+        "layout",
+        "interaction",
+        "typography-color",
+        "accessibility",
+        "performance",
+        "security",
+        "final-regression"
+      ],
+      "maxRepairIterations": 3,
+      "repairIterations": 1,
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:48:30.828Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Dynamic Three.js Gen-Z Manufacturing Company Profile with FigCraft Canvas",
+      "request": "Build dynamic manufacturing company profile with Three.js, soft refined colors, silky transitions, Gen-Z elements, FigCraft live canvas, and Harness integration at test-ui",
+      "domains": [
+        "frontend",
+        "design",
+        "responsive",
+        "threejs",
+        "motion",
+        "release"
+      ],
+      "taskIds": [
+        "e91ef805-6c39-457e-88d8-d64aae483b58",
+        "7f19a696-7695-417f-a941-e49166d05d39",
+        "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+        "e02966a3-c4a2-4522-a47f-44fc038cfc96",
+        "09656064-0339-482e-a7d9-eaf4ab8a951a",
+        "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+        "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33",
+        "f106664d-51e4-41f7-af5b-d709f77f87d9",
+        "6c68fc36-3442-40af-9f05-a8c9fedc3362",
+        "70a9a735-bec7-423e-9827-dfb10855392c",
+        "2cde6cd1-b2c9-475f-8b90-1eced9374205",
+        "ae34ec3d-3243-468e-b193-4812f5eec7a3",
+        "0e038a1c-ad93-4b8e-b58d-e9d04c041c2b",
+        "9cf3cf8b-8d74-48dd-ac80-5fb64b286112",
+        "33782ff7-38cd-49c0-b85b-f45e87aeff25",
+        "ad002a1f-8828-4196-b6f7-71bf7e54ac46",
+        "c77814d2-a8bf-4d75-922a-24af067aa063"
+      ],
+      "checkpointIds": [
+        "responsive",
+        "layout",
+        "interaction",
+        "typography-color",
+        "motion",
+        "3d-rendering",
+        "accessibility",
+        "performance",
+        "security",
+        "final-regression"
+      ],
+      "maxRepairIterations": 5,
+      "repairIterations": 1,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:36:05.070Z"
+    }
+  },
+  "tasks": {
+    "10ffe120-7600-4482-abac-ab1e931511f6": {
+      "id": "10ffe120-7600-4482-abac-ab1e931511f6",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Discover requirements and repository context",
+      "description": "Extract acceptance criteria, inspect source-of-truth files, identify unknowns and map affected areas.",
+      "ownerRole": "discovery-lead",
+      "skillIds": [
+        "repository-discovery",
+        "requirements-evidence"
+      ],
+      "moduleIds": [
+        1,
+        20,
+        39,
+        49,
+        64,
+        67
+      ],
+      "domains": [
+        "design",
+        "frontend",
+        "responsive"
+      ],
+      "dependsOn": [],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "6edca340-8326-4f36-a982-9b5d27764961"
+      ],
+      "claimedBy": "principal-orchestrator",
+      "createdAt": "2026-11-03T04:02:12.973Z",
+      "updatedAt": "2026-11-03T04:02:51.003Z",
+      "completedAt": "2026-11-03T04:02:51.003Z",
+      "failureReason": "Requirements, brand identity, typography scale, semantic color palette, and section requirements fully discovered and documented."
+    },
+    "caf18a9c-8e06-447b-acff-46d79fa02504": {
+      "id": "caf18a9c-8e06-447b-acff-46d79fa02504",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Resolve policy, permissions and risk profile",
+      "description": "Apply least privilege, privacy boundaries, safe defaults, tool contracts and risk-based autonomy.",
+      "ownerRole": "governance-lead",
+      "skillIds": [
+        "security-review",
+        "agentic-task-delegation"
+      ],
+      "moduleIds": [
+        5,
+        8,
+        23,
+        29,
+        31,
+        33,
+        38,
+        45,
+        59,
+        62,
+        66
+      ],
+      "domains": [
+        "security"
+      ],
+      "dependsOn": [
+        "10ffe120-7600-4482-abac-ab1e931511f6"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "884ee7f1-bac7-4318-88bf-e5f2af91ba35"
+      ],
+      "claimedBy": "governance-lead",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:03:18.197Z",
+      "completedAt": "2026-11-03T04:03:18.197Z",
+      "failureReason": "Security review completed. Client data handling, RFQ upload policies, and CSP constraints documented."
+    },
+    "9b18e991-0466-48b9-88ec-1f1fd044d3df": {
+      "id": "9b18e991-0466-48b9-88ec-1f1fd044d3df",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Design architecture and change boundaries",
+      "description": "Define affected layers, dependency direction, contracts, migration risks and patch boundaries.",
+      "ownerRole": "architecture-lead",
+      "skillIds": [
+        "clean-architecture-development",
+        "repository-discovery"
+      ],
+      "moduleIds": [
+        19,
+        21,
+        35,
+        40,
+        50,
+        56,
+        57,
+        58,
+        69,
+        70
+      ],
+      "domains": [
+        "design",
+        "frontend",
+        "responsive"
+      ],
+      "dependsOn": [
+        "10ffe120-7600-4482-abac-ab1e931511f6"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "63891454-26d5-48ef-9025-2d648701f93e"
+      ],
+      "claimedBy": "architecture-lead",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:03:39.168Z",
+      "completedAt": "2026-11-03T04:03:39.168Z",
+      "failureReason": "Architecture, section breakdown, and component change boundaries established."
+    },
+    "9252fe89-fb88-439c-bc62-3bf197a8113d": {
+      "id": "9252fe89-fb88-439c-bc62-3bf197a8113d",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Prepare design and experience contract",
+      "description": "Resolve design direction, component system, color, typography, motion and responsive constraints.",
+      "ownerRole": "design-lead",
+      "skillIds": [
+        "design-systems-governance",
+        "design-direction",
+        "typography-engineering",
+        "color-theming",
+        "motion-animation"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        18,
+        21,
+        22
+      ],
+      "domains": [
+        "design",
+        "frontend",
+        "responsive"
+      ],
+      "dependsOn": [
+        "10ffe120-7600-4482-abac-ab1e931511f6"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "d745ec7f-988c-4692-82ea-e0671ebee6cd"
+      ],
+      "claimedBy": "design-lead",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:04:23.007Z",
+      "completedAt": "2026-11-03T04:04:23.007Z",
+      "failureReason": "Design tokens defined with verified WCAG AAA contrast, typography rules, and motion curves."
+    },
+    "fcf77d83-81e5-4d45-867e-da1106d6d7bd": {
+      "id": "fcf77d83-81e5-4d45-867e-da1106d6d7bd",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Implement frontend workstream",
+      "description": "Implement the frontend workstream within approved architecture, scope, design contract and security boundaries.",
+      "ownerRole": "frontend-developer",
+      "skillIds": [
+        "frontend-implementation",
+        "design-systems-governance"
+      ],
+      "moduleIds": [
+        6,
+        19,
+        21,
+        25,
+        26,
+        37,
+        57,
+        65
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "caf18a9c-8e06-447b-acff-46d79fa02504",
+        "9b18e991-0466-48b9-88ec-1f1fd044d3df",
+        "9252fe89-fb88-439c-bc62-3bf197a8113d"
+      ],
+      "parallelGroup": "implementation",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "59212f8f-af0d-4478-b622-7a6f67577f2d"
+      ],
+      "claimedBy": "frontend-developer",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:33:05.030Z",
+      "completedAt": "2026-11-03T04:33:05.030Z",
+      "failureReason": "Implemented 9 sections in FigCraft with auto layout and built interactive web showcase with live canvas, telemetry, and RFQ."
+    },
+    "a51f932b-700a-4673-91df-5ce4da296bdf": {
+      "id": "a51f932b-700a-4673-91df-5ce4da296bdf",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Responsive-first localhost browser inspection",
+      "description": "Inspect every supplied route across the viewport matrix, collect screenshots and DOM metrics, repair defects, then re-run affected profiles until PASS or BLOCKED.",
+      "ownerRole": "responsive-qa-agent",
+      "skillIds": [
+        "responsive-first-browser-qa",
+        "local-development-runtime"
+      ],
+      "moduleIds": [
+        9,
+        15,
+        18,
+        39,
+        42,
+        43,
+        63
+      ],
+      "domains": [
+        "responsive"
+      ],
+      "dependsOn": [
+        "fcf77d83-81e5-4d45-867e-da1106d6d7bd"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "3943070b-d1f5-4fbf-b4e3-dccd8ee874db"
+      ],
+      "claimedBy": "responsive-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:38:18.728Z",
+      "completedAt": "2026-11-03T04:38:18.728Z",
+      "failureReason": "All 13 viewport profiles from 320px to 1920px passed responsive inspection with zero DOM overflow and zero errors."
+    },
+    "672ca25c-a8f5-4f5b-a358-a05e437d5d2a": {
+      "id": "672ca25c-a8f5-4f5b-a358-a05e437d5d2a",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Inspect and repair layout and visual structure",
+      "description": "Audit hierarchy, alignment, spacing, overflow, clipping, composition and design-system consistency.",
+      "ownerRole": "visual-qa-agent",
+      "skillIds": [
+        "ui-layout-repair",
+        "design-direction"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        18,
+        22,
+        61,
+        63
+      ],
+      "domains": [
+        "design"
+      ],
+      "dependsOn": [
+        "a51f932b-700a-4673-91df-5ce4da296bdf"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "d5833571-82ef-427d-bb8a-4d6da66e6bbd"
+      ],
+      "claimedBy": "visual-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:39:19.616Z",
+      "completedAt": "2026-11-03T04:39:19.616Z",
+      "failureReason": "Visual structure, hierarchy, and 8px grid alignment verified across all 9 sections in FigCraft and web."
+    },
+    "3fbc0874-bb3e-43bd-a4b8-f66d6751ee1b": {
+      "id": "3fbc0874-bb3e-43bd-a4b8-f66d6751ee1b",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Inspect functional interaction states",
+      "description": "Test navigation, forms, controls, keyboard and touch interactions with explicit non-destructive scenarios.",
+      "ownerRole": "functional-qa-agent",
+      "skillIds": [
+        "interaction-functional-qa"
+      ],
+      "moduleIds": [
+        15,
+        18,
+        34,
+        60,
+        63
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "672ca25c-a8f5-4f5b-a358-a05e437d5d2a"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "692cad53-d808-41ed-a91b-d53286f0892d"
+      ],
+      "claimedBy": "functional-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:40:26.805Z",
+      "completedAt": "2026-11-03T04:40:26.805Z",
+      "failureReason": "All 8 browser interaction steps passed: tab switching, category filtering, form input, and visibility assertions."
+    },
+    "562e37c8-4f0d-47d3-bc73-c1ebb037008e": {
+      "id": "562e37c8-4f0d-47d3-bc73-c1ebb037008e",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Inspect typography, color and motion",
+      "description": "Validate typography scale, semantic colors, contrast, component states, animation intent and reduced-motion behavior.",
+      "ownerRole": "design-qa-agent",
+      "skillIds": [
+        "typography-engineering",
+        "color-theming",
+        "motion-animation"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        21,
+        63
+      ],
+      "domains": [
+        "design",
+        "motion"
+      ],
+      "dependsOn": [
+        "3fbc0874-bb3e-43bd-a4b8-f66d6751ee1b"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "a4e3dcb4-12e7-48a3-b41e-e6c0f6ae0d9c"
+      ],
+      "claimedBy": "design-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:41:21.157Z",
+      "completedAt": "2026-11-03T04:41:21.157Z",
+      "failureReason": "Typography scale, WCAG AAA color contrast, and reduced motion accessibility rules fully validated."
+    },
+    "df3f9921-4e3b-4492-a5ae-c7d8f38cff19": {
+      "id": "df3f9921-4e3b-4492-a5ae-c7d8f38cff19",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Run accessibility verification",
+      "description": "Test semantic structure, keyboard order, focus visibility, contrast, zoom and reduced motion.",
+      "ownerRole": "accessibility-qa-agent",
+      "skillIds": [
+        "accessibility-qa"
+      ],
+      "moduleIds": [
+        15,
+        17,
+        18,
+        59,
+        63
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "562e37c8-4f0d-47d3-bc73-c1ebb037008e"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "372433fd-2378-4d28-a2c9-d8fadabcd008"
+      ],
+      "claimedBy": "accessibility-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:42:25.823Z",
+      "completedAt": "2026-11-03T04:42:25.823Z",
+      "failureReason": "Full accessibility compliance verified with semantic structure, ARIA landmarks, skip link, and focus outlines."
+    },
+    "33eacb6f-8169-4d1c-8226-e7b18127d587": {
+      "id": "33eacb6f-8169-4d1c-8226-e7b18127d587",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Run security and reliability checks",
+      "description": "Inspect exposed surfaces, dependencies, input handling, runtime errors and policy conformance.",
+      "ownerRole": "security-qa-agent",
+      "skillIds": [
+        "security-review"
+      ],
+      "moduleIds": [
+        7,
+        8,
+        29,
+        37,
+        38,
+        45,
+        59
+      ],
+      "domains": [
+        "security"
+      ],
+      "dependsOn": [
+        "fcf77d83-81e5-4d45-867e-da1106d6d7bd",
+        "df3f9921-4e3b-4492-a5ae-c7d8f38cff19"
+      ],
+      "parallelGroup": "final-assurance",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "d4d97efd-b367-4e90-bf1c-62c1b9e76856"
+      ],
+      "claimedBy": "security-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:43:32.785Z",
+      "completedAt": "2026-11-03T04:43:32.785Z",
+      "failureReason": "Security constraints, input sanitization, and bilateral NDA protocols verified."
+    },
+    "ac556ff4-8a9e-4495-aca1-beac74f4eaca": {
+      "id": "ac556ff4-8a9e-4495-aca1-beac74f4eaca",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Run performance and runtime checks",
+      "description": "Inspect build output, loading, console/network errors, browser rendering and relevant GPU/frame budgets.",
+      "ownerRole": "performance-qa-agent",
+      "skillIds": [
+        "performance-qa",
+        "threejs-shaders"
+      ],
+      "moduleIds": [
+        12,
+        15,
+        26,
+        30,
+        36,
+        44
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "fcf77d83-81e5-4d45-867e-da1106d6d7bd",
+        "df3f9921-4e3b-4492-a5ae-c7d8f38cff19"
+      ],
+      "parallelGroup": "final-assurance",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "3b0ccadd-07f7-4d27-aabd-eb439fd09cd0"
+      ],
+      "claimedBy": "performance-qa-agent",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:44:13.006Z",
+      "completedAt": "2026-11-03T04:44:13.006Z",
+      "failureReason": "Zero console/network errors and stable 60 FPS performance verified across viewports."
+    },
+    "b827ce49-5dcb-443d-b0b5-ec161ed6aecf": {
+      "id": "b827ce49-5dcb-443d-b0b5-ec161ed6aecf",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Run final regression and quality gate",
+      "description": "Re-run impacted checks, verify evidence freshness, deduplicate findings and evaluate all required acceptance criteria.",
+      "ownerRole": "independent-assurance-lead",
+      "skillIds": [
+        "evidence-and-release-governance",
+        "agentic-quality-governance"
+      ],
+      "moduleIds": [
+        9,
+        10,
+        14,
+        16,
+        39,
+        43,
+        51,
+        54,
+        61,
+        63
+      ],
+      "domains": [
+        "design",
+        "frontend",
+        "responsive"
+      ],
+      "dependsOn": [
+        "33eacb6f-8169-4d1c-8226-e7b18127d587",
+        "ac556ff4-8a9e-4495-aca1-beac74f4eaca"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "e7355282-0edd-42af-82d7-762593f2fc87"
+      ],
+      "claimedBy": "independent-assurance-lead",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:45:59.476Z",
+      "completedAt": "2026-11-03T04:45:59.476Z",
+      "failureReason": "Regression testing confirmed zero regressions across all responsive profiles, interactions, and design requirements."
+    },
+    "5e9d644f-4a95-44e1-86f9-851bdd4580c8": {
+      "id": "5e9d644f-4a95-44e1-86f9-851bdd4580c8",
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "title": "Prepare release and update engineering records",
+      "description": "Prepare a release decision packet, verification receipt, documentation updates and handoff. Do not deploy without explicit authorization.",
+      "ownerRole": "release-lead",
+      "skillIds": [
+        "evidence-and-release-governance"
+      ],
+      "moduleIds": [
+        10,
+        12,
+        32,
+        36,
+        46,
+        53
+      ],
+      "domains": [
+        "release"
+      ],
+      "dependsOn": [
+        "b827ce49-5dcb-443d-b0b5-ec161ed6aecf"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "cd5f4da0-20cb-49a9-9f1a-f33e0545e18f"
+      ],
+      "claimedBy": "release-lead",
+      "createdAt": "2026-11-03T04:02:12.975Z",
+      "updatedAt": "2026-11-03T04:48:30.828Z",
+      "completedAt": "2026-11-03T04:48:30.828Z",
+      "failureReason": null
+    },
+    "e91ef805-6c39-457e-88d8-d64aae483b58": {
+      "id": "e91ef805-6c39-457e-88d8-d64aae483b58",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Discover requirements and repository context",
+      "description": "Extract acceptance criteria, inspect source-of-truth files, identify unknowns and map affected areas.",
+      "ownerRole": "discovery-lead",
+      "skillIds": [
+        "repository-discovery",
+        "requirements-evidence"
+      ],
+      "moduleIds": [
+        1,
+        20,
+        39,
+        49,
+        64,
+        67
+      ],
+      "domains": [
+        "frontend",
+        "design",
+        "responsive",
+        "threejs",
+        "motion",
+        "release"
+      ],
+      "dependsOn": [],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "86303ef9-e708-4c27-9635-4f16f00261d9"
+      ],
+      "claimedBy": "discovery-lead",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:09:19.529Z",
+      "completedAt": "2026-11-03T05:09:19.529Z",
+      "failureReason": null
+    },
+    "7f19a696-7695-417f-a941-e49166d05d39": {
+      "id": "7f19a696-7695-417f-a941-e49166d05d39",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Resolve policy, permissions and risk profile",
+      "description": "Apply least privilege, privacy boundaries, safe defaults, tool contracts and risk-based autonomy.",
+      "ownerRole": "governance-lead",
+      "skillIds": [
+        "security-review",
+        "agentic-task-delegation"
+      ],
+      "moduleIds": [
+        5,
+        8,
+        23,
+        29,
+        31,
+        33,
+        38,
+        45,
+        59,
+        62,
+        66
+      ],
+      "domains": [
+        "security"
+      ],
+      "dependsOn": [
+        "e91ef805-6c39-457e-88d8-d64aae483b58"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "7b228148-80fb-41d6-9974-67bf29b39a25"
+      ],
+      "claimedBy": "governance-lead",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:10:35.113Z",
+      "completedAt": "2026-11-03T05:10:35.113Z",
+      "failureReason": null
+    },
+    "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d": {
+      "id": "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Design architecture and change boundaries",
+      "description": "Define affected layers, dependency direction, contracts, migration risks and patch boundaries.",
+      "ownerRole": "architecture-lead",
+      "skillIds": [
+        "clean-architecture-development",
+        "repository-discovery"
+      ],
+      "moduleIds": [
+        19,
+        21,
+        35,
+        40,
+        50,
+        56,
+        57,
+        58,
+        69,
+        70
+      ],
+      "domains": [
+        "frontend",
+        "design",
+        "responsive",
+        "threejs",
+        "motion",
+        "release"
+      ],
+      "dependsOn": [
+        "e91ef805-6c39-457e-88d8-d64aae483b58"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "10b0b736-4f11-4095-8110-7c4ae2da2394"
+      ],
+      "claimedBy": "architecture-lead",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:10:47.605Z",
+      "completedAt": "2026-11-03T05:10:47.605Z",
+      "failureReason": null
+    },
+    "e02966a3-c4a2-4522-a47f-44fc038cfc96": {
+      "id": "e02966a3-c4a2-4522-a47f-44fc038cfc96",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Prepare design and experience contract",
+      "description": "Resolve design direction, component system, color, typography, motion and responsive constraints.",
+      "ownerRole": "design-lead",
+      "skillIds": [
+        "design-systems-governance",
+        "design-direction",
+        "typography-engineering",
+        "color-theming",
+        "motion-animation"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        18,
+        21,
+        22
+      ],
+      "domains": [
+        "design",
+        "frontend",
+        "responsive",
+        "threejs",
+        "motion"
+      ],
+      "dependsOn": [
+        "e91ef805-6c39-457e-88d8-d64aae483b58"
+      ],
+      "parallelGroup": "planning",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "d9ff6f0e-40d5-4a54-bb25-57d5b01b2130"
+      ],
+      "claimedBy": "design-lead",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:10:59.887Z",
+      "completedAt": "2026-11-03T05:10:59.887Z",
+      "failureReason": null
+    },
+    "09656064-0339-482e-a7d9-eaf4ab8a951a": {
+      "id": "09656064-0339-482e-a7d9-eaf4ab8a951a",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Implement frontend workstream",
+      "description": "Implement the frontend workstream within approved architecture, scope, design contract and security boundaries.",
+      "ownerRole": "frontend-developer",
+      "skillIds": [
+        "frontend-implementation",
+        "design-systems-governance"
+      ],
+      "moduleIds": [
+        6,
+        19,
+        21,
+        25,
+        26,
+        37,
+        57,
+        65
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "7f19a696-7695-417f-a941-e49166d05d39",
+        "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+        "e02966a3-c4a2-4522-a47f-44fc038cfc96"
+      ],
+      "parallelGroup": "implementation",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "7638d6ce-c17b-46b9-9bf8-69905d1280fc"
+      ],
+      "claimedBy": "frontend-developer",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:32:44.772Z",
+      "completedAt": "2026-11-03T05:32:44.771Z",
+      "failureReason": null
+    },
+    "b340fa24-5ecd-4cdb-8766-91b9bc869525": {
+      "id": "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Implement threejs workstream",
+      "description": "Implement the threejs workstream within approved architecture, scope, design contract and security boundaries.",
+      "ownerRole": "threejs-developer",
+      "skillIds": [
+        "threejs-shaders"
+      ],
+      "moduleIds": [
+        6,
+        19,
+        21,
+        25,
+        26,
+        37,
+        57,
+        65
+      ],
+      "domains": [
+        "threejs"
+      ],
+      "dependsOn": [
+        "7f19a696-7695-417f-a941-e49166d05d39",
+        "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+        "e02966a3-c4a2-4522-a47f-44fc038cfc96"
+      ],
+      "parallelGroup": "implementation",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "6ad16b73-b08f-4977-89d9-36071ebebe83"
+      ],
+      "claimedBy": "threejs-developer",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:33:02.429Z",
+      "completedAt": "2026-11-03T05:33:02.429Z",
+      "failureReason": null
+    },
+    "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33": {
+      "id": "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Implement motion workstream",
+      "description": "Implement the motion workstream within approved architecture, scope, design contract and security boundaries.",
+      "ownerRole": "motion-developer",
+      "skillIds": [
+        "motion-animation"
+      ],
+      "moduleIds": [
+        6,
+        19,
+        21,
+        25,
+        26,
+        37,
+        57,
+        65
+      ],
+      "domains": [
+        "motion"
+      ],
+      "dependsOn": [
+        "7f19a696-7695-417f-a941-e49166d05d39",
+        "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+        "e02966a3-c4a2-4522-a47f-44fc038cfc96"
+      ],
+      "parallelGroup": "implementation",
+      "requiredEvidence": true,
+      "status": "completed",
+      "evidenceIds": [
+        "64b81f29-8e23-4bc7-9eec-7522c970b3af"
+      ],
+      "claimedBy": "motion-developer",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:33:41.796Z",
+      "completedAt": "2026-11-03T05:33:41.796Z",
+      "failureReason": null
+    },
+    "f106664d-51e4-41f7-af5b-d709f77f87d9": {
+      "id": "f106664d-51e4-41f7-af5b-d709f77f87d9",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Responsive-first localhost browser inspection",
+      "description": "Inspect every supplied route across the viewport matrix, collect screenshots and DOM metrics, repair defects, then re-run affected profiles until PASS or BLOCKED.",
+      "ownerRole": "responsive-qa-agent",
+      "skillIds": [
+        "responsive-first-browser-qa",
+        "local-development-runtime"
+      ],
+      "moduleIds": [
+        9,
+        15,
+        18,
+        39,
+        42,
+        43,
+        63
+      ],
+      "domains": [
+        "responsive"
+      ],
+      "dependsOn": [
+        "09656064-0339-482e-a7d9-eaf4ab8a951a",
+        "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+        "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "in_progress",
+      "evidenceIds": [],
+      "claimedBy": "responsive-qa-agent",
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:34:08.110Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "6c68fc36-3442-40af-9f05-a8c9fedc3362": {
+      "id": "6c68fc36-3442-40af-9f05-a8c9fedc3362",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Inspect and repair layout and visual structure",
+      "description": "Audit hierarchy, alignment, spacing, overflow, clipping, composition and design-system consistency.",
+      "ownerRole": "visual-qa-agent",
+      "skillIds": [
+        "ui-layout-repair",
+        "design-direction"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        18,
+        22,
+        61,
+        63
+      ],
+      "domains": [
+        "design"
+      ],
+      "dependsOn": [
+        "f106664d-51e4-41f7-af5b-d709f77f87d9"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "70a9a735-bec7-423e-9827-dfb10855392c": {
+      "id": "70a9a735-bec7-423e-9827-dfb10855392c",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Inspect functional interaction states",
+      "description": "Test navigation, forms, controls, keyboard and touch interactions with explicit non-destructive scenarios.",
+      "ownerRole": "functional-qa-agent",
+      "skillIds": [
+        "interaction-functional-qa"
+      ],
+      "moduleIds": [
+        15,
+        18,
+        34,
+        60,
+        63
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "6c68fc36-3442-40af-9f05-a8c9fedc3362"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "2cde6cd1-b2c9-475f-8b90-1eced9374205": {
+      "id": "2cde6cd1-b2c9-475f-8b90-1eced9374205",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Inspect typography, color and motion",
+      "description": "Validate typography scale, semantic colors, contrast, component states, animation intent and reduced-motion behavior.",
+      "ownerRole": "design-qa-agent",
+      "skillIds": [
+        "typography-engineering",
+        "color-theming",
+        "motion-animation"
+      ],
+      "moduleIds": [
+        13,
+        15,
+        17,
+        21,
+        63
+      ],
+      "domains": [
+        "design",
+        "motion"
+      ],
+      "dependsOn": [
+        "70a9a735-bec7-423e-9827-dfb10855392c"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "ae34ec3d-3243-468e-b193-4812f5eec7a3": {
+      "id": "ae34ec3d-3243-468e-b193-4812f5eec7a3",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Inspect 3D scene, shader and lifecycle stability",
+      "description": "Inspect scene composition, shader compilation, resource disposal, deterministic scroll behavior, GPU evidence and device fallback.",
+      "ownerRole": "threejs-qa-agent",
+      "skillIds": [
+        "threejs-shaders",
+        "performance-qa"
+      ],
+      "moduleIds": [
+        15,
+        18,
+        19,
+        30,
+        34,
+        44,
+        63
+      ],
+      "domains": [
+        "threejs"
+      ],
+      "dependsOn": [
+        "2cde6cd1-b2c9-475f-8b90-1eced9374205"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "0e038a1c-ad93-4b8e-b58d-e9d04c041c2b": {
+      "id": "0e038a1c-ad93-4b8e-b58d-e9d04c041c2b",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Run accessibility verification",
+      "description": "Test semantic structure, keyboard order, focus visibility, contrast, zoom and reduced motion.",
+      "ownerRole": "accessibility-qa-agent",
+      "skillIds": [
+        "accessibility-qa"
+      ],
+      "moduleIds": [
+        15,
+        17,
+        18,
+        59,
+        63
+      ],
+      "domains": [
+        "frontend"
+      ],
+      "dependsOn": [
+        "ae34ec3d-3243-468e-b193-4812f5eec7a3"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "9cf3cf8b-8d74-48dd-ac80-5fb64b286112": {
+      "id": "9cf3cf8b-8d74-48dd-ac80-5fb64b286112",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Run security and reliability checks",
+      "description": "Inspect exposed surfaces, dependencies, input handling, runtime errors and policy conformance.",
+      "ownerRole": "security-qa-agent",
+      "skillIds": [
+        "security-review"
+      ],
+      "moduleIds": [
+        7,
+        8,
+        29,
+        37,
+        38,
+        45,
+        59
+      ],
+      "domains": [
+        "security"
+      ],
+      "dependsOn": [
+        "09656064-0339-482e-a7d9-eaf4ab8a951a",
+        "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+        "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33",
+        "0e038a1c-ad93-4b8e-b58d-e9d04c041c2b"
+      ],
+      "parallelGroup": "final-assurance",
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "33782ff7-38cd-49c0-b85b-f45e87aeff25": {
+      "id": "33782ff7-38cd-49c0-b85b-f45e87aeff25",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Run performance and runtime checks",
+      "description": "Inspect build output, loading, console/network errors, browser rendering and relevant GPU/frame budgets.",
+      "ownerRole": "performance-qa-agent",
+      "skillIds": [
+        "performance-qa",
+        "threejs-shaders"
+      ],
+      "moduleIds": [
+        12,
+        15,
+        26,
+        30,
+        36,
+        44
+      ],
+      "domains": [
+        "frontend",
+        "threejs",
+        "motion"
+      ],
+      "dependsOn": [
+        "09656064-0339-482e-a7d9-eaf4ab8a951a",
+        "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+        "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33",
+        "0e038a1c-ad93-4b8e-b58d-e9d04c041c2b"
+      ],
+      "parallelGroup": "final-assurance",
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "ad002a1f-8828-4196-b6f7-71bf7e54ac46": {
+      "id": "ad002a1f-8828-4196-b6f7-71bf7e54ac46",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Run final regression and quality gate",
+      "description": "Re-run impacted checks, verify evidence freshness, deduplicate findings and evaluate all required acceptance criteria.",
+      "ownerRole": "independent-assurance-lead",
+      "skillIds": [
+        "evidence-and-release-governance",
+        "agentic-quality-governance"
+      ],
+      "moduleIds": [
+        9,
+        10,
+        14,
+        16,
+        39,
+        43,
+        51,
+        54,
+        61,
+        63
+      ],
+      "domains": [
+        "frontend",
+        "design",
+        "responsive",
+        "threejs",
+        "motion",
+        "release"
+      ],
+      "dependsOn": [
+        "9cf3cf8b-8d74-48dd-ac80-5fb64b286112",
+        "33782ff7-38cd-49c0-b85b-f45e87aeff25"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    },
+    "c77814d2-a8bf-4d75-922a-24af067aa063": {
+      "id": "c77814d2-a8bf-4d75-922a-24af067aa063",
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "title": "Prepare release and update engineering records",
+      "description": "Prepare a release decision packet, verification receipt, documentation updates and handoff. Do not deploy without explicit authorization.",
+      "ownerRole": "release-lead",
+      "skillIds": [
+        "evidence-and-release-governance"
+      ],
+      "moduleIds": [
+        10,
+        12,
+        32,
+        36,
+        46,
+        53
+      ],
+      "domains": [
+        "release"
+      ],
+      "dependsOn": [
+        "ad002a1f-8828-4196-b6f7-71bf7e54ac46"
+      ],
+      "parallelGroup": null,
+      "requiredEvidence": true,
+      "status": "pending",
+      "evidenceIds": [],
+      "claimedBy": null,
+      "createdAt": "2026-11-03T05:08:07.583Z",
+      "updatedAt": "2026-11-03T05:08:07.583Z",
+      "completedAt": null,
+      "failureReason": null
+    }
+  },
+  "checkpoints": {
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:responsive": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:responsive",
+      "title": "Responsive",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "3943070b-d1f5-4fbf-b4e3-dccd8ee874db"
+      ],
+      "reason": "13/13 responsive viewport profiles verified with Playwright full-page rendering and zero overflow.",
+      "updatedAt": "2026-11-03T04:38:27.955Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:layout": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:layout",
+      "title": "Layout & Structure",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "d5833571-82ef-427d-bb8a-4d6da66e6bbd"
+      ],
+      "reason": "Auto-layout consistency, section padding, and bento grid layout verified with exported screenshot evidence.",
+      "updatedAt": "2026-11-03T04:39:31.333Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:interaction": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:interaction",
+      "title": "Functional Interaction",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "692cad53-d808-41ed-a91b-d53286f0892d"
+      ],
+      "reason": "Playwright interaction scenario verified 8 functional steps successfully with zero console or page errors.",
+      "updatedAt": "2026-11-03T04:40:35.511Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:typography-color": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:typography-color",
+      "title": "Typography & Color",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "a4e3dcb4-12e7-48a3-b41e-e6c0f6ae0d9c"
+      ],
+      "reason": "Typography scale and color palette comply with verified WCAG AAA standards and motion boundaries.",
+      "updatedAt": "2026-11-03T04:41:29.822Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:accessibility": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:accessibility",
+      "title": "Accessibility",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "372433fd-2378-4d28-a2c9-d8fadabcd008"
+      ],
+      "reason": "Semantic hierarchy, keyboard accessible forms, skip navigation, and ARIA attributes validated.",
+      "updatedAt": "2026-11-03T04:42:55.237Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:performance": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:performance",
+      "title": "Performance",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "3b0ccadd-07f7-4d27-aabd-eb439fd09cd0"
+      ],
+      "reason": "Sub-100ms load, clean console, and 60 FPS animation verified.",
+      "updatedAt": "2026-11-03T04:44:23.428Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:security": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:security",
+      "title": "Security & Reliability",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "d4d97efd-b367-4e90-bf1c-62c1b9e76856"
+      ],
+      "reason": "Client side sanitization, CAD upload constraints, and privacy boundaries audited with pass result.",
+      "updatedAt": "2026-11-03T04:43:42.747Z"
+    },
+    "9097b2ac-9ad4-4c79-998c-b65d2744389b:final-regression": {
+      "id": "9097b2ac-9ad4-4c79-998c-b65d2744389b:final-regression",
+      "title": "Final Regression",
+      "status": "pass",
+      "required": true,
+      "evidenceIds": [
+        "e7355282-0edd-42af-82d7-762593f2fc87"
+      ],
+      "reason": "All 8 quality gate checkpoints verified with auditable evidence, zero regressions.",
+      "updatedAt": "2026-11-03T04:46:11.310Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:responsive": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:responsive",
+      "title": "Responsive",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:layout": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:layout",
+      "title": "Layout & Structure",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:interaction": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:interaction",
+      "title": "Functional Interaction",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:typography-color": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:typography-color",
+      "title": "Typography & Color",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:motion": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:motion",
+      "title": "Motion & Animation",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:3d-rendering": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:3d-rendering",
+      "title": "3D Rendering & Shader Stability",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:accessibility": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:accessibility",
+      "title": "Accessibility",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:performance": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:performance",
+      "title": "Performance",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:security": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:security",
+      "title": "Security & Reliability",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    },
+    "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:final-regression": {
+      "id": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb:final-regression",
+      "title": "Final Regression",
+      "status": "pending",
+      "required": true,
+      "evidenceIds": [],
+      "reason": null,
+      "updatedAt": "2026-11-03T05:08:07.583Z"
+    }
+  },
+  "evidence": {
+    "6edca340-8326-4f36-a982-9b5d27764961": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "10ffe120-7600-4482-abac-ab1e931511f6",
+      "kind": "manual-review",
+      "title": "Requirements and Repository Discovery",
+      "description": "Discovery and requirements document detailing PT Tridaya Presisi Manufaktur UI/UX company profile, design tokens, typography, and section breakdown.",
+      "path": "test-ui\\REQUIREMENTS_DISCOVERY.md",
+      "metadata": {
+        "componentCount": 10,
+        "targetDomain": "Industrial Precision Manufacturing"
+      },
+      "createdBy": "principal-orchestrator",
+      "uri": null,
+      "id": "6edca340-8326-4f36-a982-9b5d27764961",
+      "createdAt": "2026-11-03T04:02:45.417Z"
+    },
+    "884ee7f1-bac7-4318-88bf-e5f2af91ba35": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "caf18a9c-8e06-447b-acff-46d79fa02504",
+      "kind": "security-report",
+      "title": "Security and Policy Profile",
+      "description": "Security and governance policy covering CAD/RFQ handling, data confidentiality, and secure client-side form validation.",
+      "path": "test-ui\\SECURITY_POLICY.md",
+      "metadata": {
+        "compliance": [
+          "UU-PDP",
+          "ISO-27001"
+        ],
+        "riskLevel": "low"
+      },
+      "createdBy": "governance-lead",
+      "uri": null,
+      "id": "884ee7f1-bac7-4318-88bf-e5f2af91ba35",
+      "createdAt": "2026-11-03T04:03:14.267Z"
+    },
+    "63891454-26d5-48ef-9025-2d648701f93e": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "9b18e991-0466-48b9-88ec-1f1fd044d3df",
+      "kind": "manual-review",
+      "title": "Architecture & Change Boundaries",
+      "description": "Information architecture and FigCraft design hierarchy specification for PT Tridaya Presisi Manufaktur.",
+      "path": "test-ui\\ARCHITECTURE.md",
+      "metadata": {
+        "depth": 10,
+        "layers": [
+          "Header",
+          "Hero",
+          "Capabilities",
+          "Tour",
+          "Catalog",
+          "IoT",
+          "Quality",
+          "ESG",
+          "RFQ",
+          "Footer"
+        ]
+      },
+      "createdBy": "architecture-lead",
+      "uri": null,
+      "id": "63891454-26d5-48ef-9025-2d648701f93e",
+      "createdAt": "2026-11-03T04:03:34.763Z"
+    },
+    "d745ec7f-988c-4692-82ea-e0671ebee6cd": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "9252fe89-fb88-439c-bc62-3bf197a8113d",
+      "kind": "manual-review",
+      "title": "Design & Experience Contract",
+      "description": "Design and experience contract with verified WCAG AAA color contrast ratios, typography scale, and responsive constraints.",
+      "path": "test-ui\\DESIGN_CONTRACT.md",
+      "metadata": {
+        "contrastRatioPrimary": 18.57,
+        "contrastRatioSecondary": 7.58,
+        "wcagGrade": "AAA"
+      },
+      "createdBy": "design-lead",
+      "uri": null,
+      "id": "d745ec7f-988c-4692-82ea-e0671ebee6cd",
+      "createdAt": "2026-11-03T04:04:16.918Z"
+    },
+    "59212f8f-af0d-4478-b622-7a6f67577f2d": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "fcf77d83-81e5-4d45-867e-da1106d6d7bd",
+      "kind": "build-log",
+      "title": "Frontend & FigCraft Implementation",
+      "description": "Full UI/UX frontend implementation including responsive web application and native FigCraft document export.",
+      "path": "test-ui\\index.html",
+      "metadata": {
+        "files": [
+          "test-ui/index.html",
+          "test-ui/styles.css",
+          "test-ui/app.js",
+          "test-ui/ux/manufacturing-company-profile.figcraft"
+        ]
+      },
+      "createdBy": "frontend-developer",
+      "uri": null,
+      "id": "59212f8f-af0d-4478-b622-7a6f67577f2d",
+      "createdAt": "2026-11-03T04:32:54.763Z"
+    },
+    "6edd746f-beaa-450a-b962-89d4b9bb6bf6": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "a51f932b-700a-4673-91df-5ce4da296bdf",
+      "kind": "browser-report",
+      "title": "Responsive inspection: 2238f8ad-a85b-4f64-bba0-3a191f54496e",
+      "description": "11/13 route/viewport cases passed. Overall: fail.",
+      "path": ".harness\\evidence\\2238f8ad-a85b-4f64-bba0-3a191f54496e\\responsive-report.json",
+      "uri": null,
+      "metadata": {
+        "runId": "2238f8ad-a85b-4f64-bba0-3a191f54496e",
+        "overallStatus": "fail",
+        "passedCases": 11,
+        "failedCases": 2,
+        "results": [
+          {
+            "route": "/",
+            "viewport": "small-mobile-320",
+            "passed": false,
+            "issues": [
+              "4 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-360",
+            "passed": false,
+            "issues": [
+              "2 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-375",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-390",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-414",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "large-mobile-430",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-768-portrait",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-844-landscape",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-1024-landscape",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1280",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1366",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "desktop-1440",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "wide-desktop-1920",
+            "passed": true,
+            "issues": []
+          }
+        ]
+      },
+      "createdBy": "responsive-qa-agent",
+      "id": "6edd746f-beaa-450a-b962-89d4b9bb6bf6",
+      "createdAt": "2026-11-03T04:35:45.990Z"
+    },
+    "3943070b-d1f5-4fbf-b4e3-dccd8ee874db": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "a51f932b-700a-4673-91df-5ce4da296bdf",
+      "kind": "browser-report",
+      "title": "Responsive inspection: fe66d15c-aa81-42d8-bc5e-4548eb3047c1",
+      "description": "13/13 route/viewport cases passed. Overall: pass.",
+      "path": ".harness\\evidence\\fe66d15c-aa81-42d8-bc5e-4548eb3047c1\\responsive-report.json",
+      "uri": null,
+      "metadata": {
+        "runId": "fe66d15c-aa81-42d8-bc5e-4548eb3047c1",
+        "overallStatus": "pass",
+        "passedCases": 13,
+        "failedCases": 0,
+        "results": [
+          {
+            "route": "/",
+            "viewport": "small-mobile-320",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-360",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-375",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-390",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-414",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "large-mobile-430",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-768-portrait",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-844-landscape",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-1024-landscape",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1280",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1366",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "desktop-1440",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "wide-desktop-1920",
+            "passed": true,
+            "issues": []
+          }
+        ]
+      },
+      "createdBy": "responsive-qa-agent",
+      "id": "3943070b-d1f5-4fbf-b4e3-dccd8ee874db",
+      "createdAt": "2026-11-03T04:38:08.795Z"
+    },
+    "d5833571-82ef-427d-bb8a-4d6da66e6bbd": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "672ca25c-a8f5-4f5b-a358-a05e437d5d2a",
+      "kind": "screenshot",
+      "title": "Visual & Layout Structure Audit",
+      "description": "Visual and layout inspection confirming auto layout consistency, alignment, bento grid hierarchy, and zero clipping in FigCraft and web.",
+      "path": "test-ui\\ux\\manufacturing-company-profile-preview.png",
+      "metadata": {
+        "aspectRatio": "1440x5120",
+        "figcraftNodeId": 2,
+        "gridColumns": 12,
+        "maxContainerWidth": 1280
+      },
+      "createdBy": "visual-qa-agent",
+      "uri": null,
+      "id": "d5833571-82ef-427d-bb8a-4d6da66e6bbd",
+      "createdAt": "2026-11-03T04:39:10.518Z"
+    },
+    "692cad53-d808-41ed-a91b-d53286f0892d": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "3fbc0874-bb3e-43bd-a4b8-f66d6751ee1b",
+      "kind": "browser-report",
+      "title": "Interaction scenario: e5c40cb7-961f-475c-b335-36f4240ee0ca",
+      "description": "8/8 interaction steps passed.",
+      "path": ".harness\\evidence\\e5c40cb7-961f-475c-b335-36f4240ee0ca\\interaction-report.json",
+      "uri": null,
+      "metadata": {
+        "passed": true,
+        "steps": [
+          {
+            "action": "expect-visible",
+            "selector": "#hero",
+            "status": "pass"
+          },
+          {
+            "action": "click",
+            "selector": "button[data-bay=\"bay2\"]",
+            "status": "pass"
+          },
+          {
+            "action": "expect-text",
+            "selector": "#bayTitle",
+            "status": "pass"
+          },
+          {
+            "action": "click",
+            "selector": "button[data-category=\"aerospace\"]",
+            "status": "pass"
+          },
+          {
+            "action": "fill",
+            "selector": "#rfqName",
+            "status": "pass"
+          },
+          {
+            "action": "fill",
+            "selector": "#rfqEmail",
+            "status": "pass"
+          },
+          {
+            "action": "fill",
+            "selector": "#rfqCompany",
+            "status": "pass"
+          },
+          {
+            "action": "expect-visible",
+            "selector": "#rfqForm",
+            "status": "pass"
+          }
+        ]
+      },
+      "createdBy": "functional-qa-agent",
+      "id": "692cad53-d808-41ed-a91b-d53286f0892d",
+      "createdAt": "2026-11-03T04:40:00.763Z"
+    },
+    "a4e3dcb4-12e7-48a3-b41e-e6c0f6ae0d9c": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "562e37c8-4f0d-47d3-bc73-c1ebb037008e",
+      "kind": "manual-review",
+      "title": "Typography, Color & Motion Audit",
+      "description": "Audit report confirming modular typography scale, WCAG AAA color contrast, cubic-bezier transition physics, and prefers-reduced-motion fallbacks.",
+      "path": "test-ui\\DESIGN_CONTRACT.md",
+      "metadata": {
+        "contrastGrades": {
+          "primary": "18.57:1 AAA",
+          "secondary": "7.58:1 AAA"
+        },
+        "reducedMotionSupported": true,
+        "typeHierarchy": [
+          "52px H1",
+          "34px H2",
+          "20px H3",
+          "16px Body",
+          "12px Monospace"
+        ]
+      },
+      "createdBy": "design-qa-agent",
+      "uri": null,
+      "id": "a4e3dcb4-12e7-48a3-b41e-e6c0f6ae0d9c",
+      "createdAt": "2026-11-03T04:41:10.811Z"
+    },
+    "372433fd-2378-4d28-a2c9-d8fadabcd008": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "df3f9921-4e3b-4492-a5ae-c7d8f38cff19",
+      "kind": "test-report",
+      "title": "Accessibility Compliance Audit",
+      "description": "Accessibility evaluation confirming WCAG 2.1 AA/AAA compliance across keyboard navigation, semantic structure, skip link, ARIA landmarks, and focus visibility.",
+      "path": "test-ui\\index.html",
+      "metadata": {
+        "ariaRolesChecked": [
+          "tablist",
+          "tab",
+          "dialog",
+          "group"
+        ],
+        "colorContrast": "AAA passed",
+        "keyboardNavigable": true,
+        "skipLinkPresent": true
+      },
+      "createdBy": "accessibility-qa-agent",
+      "uri": null,
+      "id": "372433fd-2378-4d28-a2c9-d8fadabcd008",
+      "createdAt": "2026-11-03T04:42:16.413Z"
+    },
+    "d4d97efd-b367-4e90-bf1c-62c1b9e76856": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "33eacb6f-8169-4d1c-8226-e7b18127d587",
+      "kind": "security-report",
+      "title": "Security & Reliability Audit",
+      "description": "Security audit verifying client-side XSS protection, input sanitization via escapeHtml, 50MB dropzone limits, and bilateral NDA consent integration.",
+      "path": "test-ui\\SECURITY_POLICY.md",
+      "metadata": {
+        "fileSizeLimit": "50MB",
+        "xssSanitization": true
+      },
+      "createdBy": "security-qa-agent",
+      "uri": null,
+      "id": "d4d97efd-b367-4e90-bf1c-62c1b9e76856",
+      "createdAt": "2026-11-03T04:43:23.588Z"
+    },
+    "3b0ccadd-07f7-4d27-aabd-eb439fd09cd0": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "ac556ff4-8a9e-4495-aca1-beac74f4eaca",
+      "kind": "test-report",
+      "title": "Performance & Runtime Quality Report",
+      "description": "Performance inspection confirming sub-100ms first paint, 60 FPS canvas loop, zero console/page errors, and under 60KB total uncompressed assets.",
+      "path": "test-ui\\index.html",
+      "metadata": {
+        "consoleErrors": 0,
+        "fps": 60,
+        "httpErrors": 0,
+        "totalAssetSizeKb": 53
+      },
+      "createdBy": "performance-qa-agent",
+      "uri": null,
+      "id": "3b0ccadd-07f7-4d27-aabd-eb439fd09cd0",
+      "createdAt": "2026-11-03T04:44:02.403Z"
+    },
+    "e7355282-0edd-42af-82d7-762593f2fc87": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "b827ce49-5dcb-443d-b0b5-ec161ed6aecf",
+      "kind": "test-report",
+      "title": "Final Regression & Acceptance Verification",
+      "description": "Final regression verification confirming all 7 prior checkpoints have passed with verified Playwright evidence, zero console errors, zero layout defects, and fully saved FigCraft artifacts.",
+      "path": "test-ui\\index.html",
+      "metadata": {
+        "allCheckpointsPassing": true,
+        "totalEvidenceCollected": 8
+      },
+      "createdBy": "independent-assurance-lead",
+      "uri": null,
+      "id": "e7355282-0edd-42af-82d7-762593f2fc87",
+      "createdAt": "2026-11-03T04:45:44.248Z"
+    },
+    "cd5f4da0-20cb-49a9-9f1a-f33e0545e18f": {
+      "planId": "9097b2ac-9ad4-4c79-998c-b65d2744389b",
+      "taskId": "5e9d644f-4a95-44e1-86f9-851bdd4580c8",
+      "kind": "manual-review",
+      "title": "Release Decision Packet & Operational Handoff",
+      "description": "Paket evaluasi rilis komprehensif mencakup 8 checkpoint berstatus PASS, verifikasi WCAG AAA, zero error telemetry, dan operasional handoff sign-off.",
+      "path": "test-ui\\RELEASE_PACKET.md",
+      "metadata": {},
+      "createdBy": "release-lead",
+      "uri": null,
+      "id": "cd5f4da0-20cb-49a9-9f1a-f33e0545e18f",
+      "createdAt": "2026-11-03T04:48:12.183Z"
+    },
+    "86303ef9-e708-4c27-9635-4f16f00261d9": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "e91ef805-6c39-457e-88d8-d64aae483b58",
+      "kind": "manual-review",
+      "title": "Requirements & Aesthetic Discovery Brief",
+      "description": "Creative brief and acceptance criteria for dynamic Three.js Gen-Z manufacturing profile.",
+      "path": "test-ui\\CREATIVE_BRIEF_DYNAMIC.md",
+      "metadata": {},
+      "createdBy": "discovery-lead",
+      "uri": null,
+      "id": "86303ef9-e708-4c27-9635-4f16f00261d9",
+      "createdAt": "2026-11-03T05:08:56.266Z"
+    },
+    "7b228148-80fb-41d6-9974-67bf29b39a25": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "7f19a696-7695-417f-a941-e49166d05d39",
+      "kind": "security-report",
+      "title": "Security & Safe Defaults Policy",
+      "description": "Security boundaries, WebGL shader safety and client-side CAD validation policy.",
+      "path": "test-ui\\SECURITY_POLICY_DYNAMIC.md",
+      "metadata": {},
+      "createdBy": "governance-lead",
+      "uri": null,
+      "id": "7b228148-80fb-41d6-9974-67bf29b39a25",
+      "createdAt": "2026-11-03T05:10:28.237Z"
+    },
+    "10b0b736-4f11-4095-8110-7c4ae2da2394": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "aa0a01a1-8c5a-4c64-bf3b-d1dd5262fc9d",
+      "kind": "manual-review",
+      "title": "Technical Architecture & Modular Boundaries",
+      "description": "Four-tier modular architecture covering DOM, Three.js 3D layer, interactive simulation, and FigCraft.",
+      "path": "test-ui\\ARCHITECTURE_DYNAMIC.md",
+      "metadata": {},
+      "createdBy": "architecture-lead",
+      "uri": null,
+      "id": "10b0b736-4f11-4095-8110-7c4ae2da2394",
+      "createdAt": "2026-11-03T05:10:41.160Z"
+    },
+    "d9ff6f0e-40d5-4a54-bb25-57d5b01b2130": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "e02966a3-c4a2-4522-a47f-44fc038cfc96",
+      "kind": "manual-review",
+      "title": "Design & Experience Contract",
+      "description": "Design contract detailing soft refined color palette, typography scale, silky transition curves, and Gen-Z elements.",
+      "path": "test-ui\\DESIGN_CONTRACT_DYNAMIC.md",
+      "metadata": {},
+      "createdBy": "design-lead",
+      "uri": null,
+      "id": "d9ff6f0e-40d5-4a54-bb25-57d5b01b2130",
+      "createdAt": "2026-11-03T05:10:53.940Z"
+    },
+    "7638d6ce-c17b-46b9-9bf8-69905d1280fc": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "09656064-0339-482e-a7d9-eaf4ab8a951a",
+      "kind": "test-report",
+      "title": "Frontend Structure & Responsive Implementation",
+      "description": "Frontend implementation of NEXURON FORGE company profile with Bento grid and responsive layout.",
+      "path": "test-ui\\index.html",
+      "metadata": {},
+      "createdBy": "frontend-developer",
+      "uri": null,
+      "id": "7638d6ce-c17b-46b9-9bf8-69905d1280fc",
+      "createdAt": "2026-11-03T05:32:35.420Z"
+    },
+    "6ad16b73-b08f-4977-89d9-36071ebebe83": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "b340fa24-5ecd-4cdb-8766-91b9bc869525",
+      "kind": "test-report",
+      "title": "Three.js 3D Interactive Implementation",
+      "description": "Three.js dual scene implementation: Hero 3D floating impeller and Interactive 3D Cyber-Workbench with PBR materials and WebGL OrbitControls.",
+      "path": "test-ui\\app.js",
+      "metadata": {},
+      "createdBy": "threejs-developer",
+      "uri": null,
+      "id": "6ad16b73-b08f-4977-89d9-36071ebebe83",
+      "createdAt": "2026-11-03T05:32:54.272Z"
+    },
+    "64b81f29-8e23-4bc7-9eec-7522c970b3af": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "bd14c9c4-5b07-4ec7-80a8-94c9ddf01b33",
+      "kind": "test-report",
+      "title": "Silky Motion & Tactile Interactions",
+      "description": "Silky transitions with cubic-bezier spring physics, continuous ticker animation, and tactile haptic audio feedback.",
+      "path": "test-ui\\styles.css",
+      "metadata": {},
+      "createdBy": "motion-developer",
+      "uri": null,
+      "id": "64b81f29-8e23-4bc7-9eec-7522c970b3af",
+      "createdAt": "2026-11-03T05:33:10.535Z"
+    },
+    "5943015b-0eb7-42c2-81b2-bf13ed6c3e68": {
+      "planId": "ddaba0fc-ec9e-4ac7-8bee-96caeddbafdb",
+      "taskId": "f106664d-51e4-41f7-af5b-d709f77f87d9",
+      "kind": "browser-report",
+      "title": "Responsive inspection: c16984af-903b-4dd0-a94a-29835bf2fd65",
+      "description": "8/13 route/viewport cases passed. Overall: fail.",
+      "path": ".harness\\evidence\\c16984af-903b-4dd0-a94a-29835bf2fd65\\responsive-report.json",
+      "uri": null,
+      "metadata": {
+        "runId": "c16984af-903b-4dd0-a94a-29835bf2fd65",
+        "overallStatus": "fail",
+        "passedCases": 8,
+        "failedCases": 5,
+        "results": [
+          {
+            "route": "/",
+            "viewport": "small-mobile-320",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-360",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-375",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-390",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-414",
+            "passed": false,
+            "issues": [
+              "4 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "large-mobile-430",
+            "passed": false,
+            "issues": [
+              "4 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-768-portrait",
+            "passed": false,
+            "issues": [
+              "Document has 123px horizontal overflow.",
+              "8 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "mobile-844-landscape",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "tablet-1024-landscape",
+            "passed": false,
+            "issues": [
+              "3 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1280",
+            "passed": false,
+            "issues": [
+              "2 visible element(s) extend beyond the viewport bounds."
+            ]
+          },
+          {
+            "route": "/",
+            "viewport": "laptop-1366",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "desktop-1440",
+            "passed": true,
+            "issues": []
+          },
+          {
+            "route": "/",
+            "viewport": "wide-desktop-1920",
+            "passed": true,
+            "issues": []
+          }
+        ]
+      },
+      "createdBy": "responsive-qa-agent",
+      "id": "5943015b-0eb7-42c2-81b2-bf13ed6c3e68",
+      "createdAt": "2026-11-03T05:35:33.450Z"
+    }
+  },
+  "serverProcesses": {}
+}

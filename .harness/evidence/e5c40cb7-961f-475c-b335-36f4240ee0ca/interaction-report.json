@@ -1,0 +1,55 @@
+{
+  "runId": "e5c40cb7-961f-475c-b335-36f4240ee0ca",
+  "route": "/",
+  "passed": true,
+  "startedAt": "2026-11-03T04:39:58.871Z",
+  "finishedAt": "2026-11-03T04:40:00.761Z",
+  "steps": [
+    {
+      "action": "expect-visible",
+      "selector": "#hero",
+      "status": "pass"
+    },
+    {
+      "action": "click",
+      "selector": "button[data-bay=\"bay2\"]",
+      "status": "pass"
+    },
+    {
+      "action": "expect-text",
+      "selector": "#bayTitle",
+      "status": "pass"
+    },
+    {
+      "action": "click",
+      "selector": "button[data-category=\"aerospace\"]",
+      "status": "pass"
+    },
+    {
+      "action": "fill",
+      "selector": "#rfqName",
+      "status": "pass"
+    },
+    {
+      "action": "fill",
+      "selector": "#rfqEmail",
+      "status": "pass"
+    },
+    {
+      "action": "fill",
+      "selector": "#rfqCompany",
+      "status": "pass"
+    },
+    {
+      "action": "expect-visible",
+      "selector": "#rfqForm",
+      "status": "pass"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshotPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\e5c40cb7-961f-475c-b335-36f4240ee0ca\\interaction.png",
+  "reportPath": "D:\\portfolio-project-2026\\mcp_figcraft\\.harness\\evidence\\e5c40cb7-961f-475c-b335-36f4240ee0ca\\interaction-report.json"
+}
