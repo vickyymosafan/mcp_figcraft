@@ -12,28 +12,50 @@ export type NodeType =
   | 'polygon';
 
 export type AutoLayoutDirection = 'none' | 'vertical' | 'horizontal';
-export type AutoLayoutAlignMain = 'min' | 'center' | 'max' | 'spaceBetween' | 'start' | 'end' | 'space-between';
+export type AutoLayoutAlignMain = 'min' | 'center' | 'max' | 'spaceBetween' | 'spaceAround' | 'spaceEvenly' | 'start' | 'end' | 'space-between';
 export type AutoLayoutAlignCross = 'min' | 'center' | 'max' | 'baseline' | 'start' | 'end';
 export type SizingBehavior = 'fixed' | 'hug' | 'fill';
+export type TextAutoResizeMode = 'widthAndHeight' | 'height' | 'none' | 'truncate';
+
+export interface FigCraftEffect {
+  type: 'dropShadow' | 'innerShadow' | 'layerBlur' | 'backgroundBlur';
+  color?: string;
+  offset?: [number, number];
+  radius?: number;
+  spread?: number;
+}
 
 export interface FigCraftNodeProps {
-  fills?: Array<{ color: string; type: string; opacity?: number }> | string[];
+  fills?: Array<{ color?: string; type: string; opacity?: number; stops?: string[]; from?: [number, number]; to?: [number, number] }> | string[];
   strokes?: Array<{ color: string; type: string }> | string[];
   strokeWeight?: number;
-  cornerRadius?: number;
+  cornerRadius?: number | [number, number, number, number];
+  cornerSmoothing?: number; // 0 - 1 (Squircle / Apple curvature)
+  effects?: FigCraftEffect[];
   fontSize?: number;
   fontFamily?: string;
   fontWeight?: number;
   lineHeight?: string | number;
   letterSpacing?: string | number;
+  textAlign?: 'left' | 'center' | 'right' | 'justified';
+  textAutoResize?: TextAutoResizeMode;
   opacity?: number;
   layout?: AutoLayoutDirection;
   gap?: number;
+  crossGap?: number;
   padding?: number | [number, number, number, number];
-  mainAlign?: 'min' | 'center' | 'max' | 'spaceBetween';
+  paddingTop?: number;
+  paddingRight?: number;
+  paddingBottom?: number;
+  paddingLeft?: number;
+  mainAlign?: 'min' | 'center' | 'max' | 'spaceBetween' | 'spaceAround' | 'spaceEvenly';
   crossAlign?: 'min' | 'center' | 'max' | 'baseline';
   sizingH?: SizingBehavior;
   sizingV?: SizingBehavior;
+  minWidth?: number;
+  maxWidth?: number;
+  minHeight?: number;
+  maxHeight?: number;
   [key: string]: unknown;
 }
 
@@ -61,6 +83,7 @@ export interface AutoLayoutFrameParams {
   y?: number;
   padding?: number | [number, number, number, number];
   gap?: number;
+  crossGap?: number;
   mainAlign?: AutoLayoutAlignMain;
   crossAlign?: AutoLayoutAlignCross;
   sizingH?: SizingBehavior;
@@ -69,6 +92,8 @@ export interface AutoLayoutFrameParams {
   borderColor?: string;
   borderWidth?: number;
   cornerRadius?: number;
+  cornerSmoothing?: number;
+  effects?: FigCraftEffect[];
   opacity?: number;
 }
 
@@ -79,9 +104,12 @@ export interface ResponsiveSystemResult {
   theme: {
     bg: string;
     surface: string;
+    card: string;
     border: string;
     primary: string;
+    primaryGlow: string;
     accent: string;
+    accentEmerald: string;
     text: string;
     textMuted: string;
   };
@@ -120,6 +148,8 @@ export interface LayoutAuditReport {
   totalNodes: number;
   autoLayoutFrameCount: number;
   flatRootChildrenCount: number;
+  overflowCount: number;
+  escapedNewlineCount: number;
   responsiveArtboards: {
     desktopFound: boolean;
     tabletFound: boolean;
@@ -134,6 +164,7 @@ export interface LayoutAuditReport {
       autoLayoutAdoption: string;
       responsiveCoverage: string;
       cleanTextAdoption: string;
+      overflowIntegrity: string;
     };
   };
 }

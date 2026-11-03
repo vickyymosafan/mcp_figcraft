@@ -5,7 +5,7 @@ import { FigCraftClient } from './client.js';
 export function createFigCraftServer(client: FigCraftClient = new FigCraftClient()): McpServer {
   const server = new McpServer({
     name: 'figcraft-mcp-server',
-    version: '1.2.0'
+    version: '1.3.0'
   });
 
   const registerWithAliases = (
@@ -26,7 +26,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         'Langkah 1 & 2 Kanonik: Buat berkas kanvas (.figcraft) beserta namanya di disk, lalu otomatis LANGSUNG buka berkas tersebut di jendela aktif FigCraft GUI di monitor pengguna tanpa perlu user buka manual.',
       inputSchema: z.object({
         filePath: z.string().describe('Path file kanvas tujuan (contoh: designs/storefront.figcraft)'),
-        projectName: z.string().optional().describe('Nama proyek desain (contoh: Aura 3D Commerce)')
+        projectName: z.string().optional().describe('Nama proyek desain (contoh: Aura Spatial Commerce)')
       })
     },
     async ({ filePath, projectName }) => {
@@ -55,10 +55,10 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     ['figcraft_create_responsive_system', 'create_responsive_system'],
     {
       description:
-        'Buat sistem 3 Artboard Responsif tersinkronisasi berdampingan di kanvas (Desktop 1440px, Tablet 768px, Mobile 375px) dengan Auto-Layout root frame vertikal dan tema warna konsisten. Terintegrasi penuh dengan Harness MCP responsive verification.',
+        'Buat sistem 3 Artboard Responsif tersinkronisasi berdampingan di kanvas (Desktop 1440px, Tablet 768px, Mobile 375px) dengan Auto-Layout root frame vertikal dan tema warna Luxury Obsidian Titanium. Terintegrasi penuh dengan Harness MCP responsive verification.',
       inputSchema: z.object({
         projectName: z.string().optional().describe('Nama proyek/halaman (contoh: Storefront Landing Page)'),
-        theme: z.enum(['dark', 'light']).optional().default('dark').describe('Tema visual kanvas: dark atau light')
+        theme: z.enum(['luxury', 'dark', 'light']).optional().default('luxury').describe('Tema visual kanvas: luxury (Obsidian & Amber Gold), dark, atau light')
       })
     },
     async ({ projectName, theme }) => {
@@ -72,7 +72,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
                 `- 🖥️ Desktop Frame (1440x1024): ID ${res.desktop.id} (x: ${res.desktop.x})\n` +
                 `- 📱 Tablet Frame (768x1024): ID ${res.tablet.id} (x: ${res.tablet.x})\n` +
                 `- 📲 Mobile Frame (375x812): ID ${res.mobile.id} (x: ${res.mobile.x})\n\n` +
-                `Semua artboard telah dikonfigurasi dengan Auto-Layout vertikal siap diisi komponen atomik.`
+                `Tema aktif: ${theme.toUpperCase()}. Semua artboard telah dikonfigurasi dengan Auto-Layout vertikal siap diisi komponen atomik.`
             }
           ]
         };
@@ -86,12 +86,12 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 3: Auto-Layout Frame (Figma Flexbox Container)
+  // Tool 3: Auto-Layout Frame (Figma Flexbox Container with Glassmorphism & Shadow)
   registerWithAliases(
     ['figcraft_create_autolayout_frame', 'create_autolayout_frame'],
     {
       description:
-        'Buat kontainer Auto-Layout (Figma-grade Flexbox) dengan arah vertikal/horizontal, padding, gap, alignment, dan sizing (hug/fill/fixed) sehingga elemen tidak berantakan atau bertumpuk.',
+        'Buat kontainer Auto-Layout (Figma-grade Flexbox) dengan arah vertikal/horizontal, padding, gap, alignment, sizing (hug/fill/fixed), corner smoothing (squircle), dan dropShadow/glassmorphism sehingga elemen tidak berantakan atau bertumpuk.',
       inputSchema: z.object({
         name: z.string().describe('Nama kontainer frame (contoh: Navbar, Hero Stack, Card Grid)'),
         parent: z.number().optional().describe('ID parent frame (default: halaman aktif)'),
@@ -102,14 +102,17 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         y: z.number().optional().describe('Posisi Y (hanya untuk artboard root)'),
         padding: z.union([z.number(), z.tuple([z.number(), z.number(), z.number(), z.number()])]).optional().describe('Padding pixel: angka atau [T, R, B, L]'),
         gap: z.number().optional().default(16).describe('Jarak antar elemen anak dalam pixel'),
-        mainAlign: z.enum(['min', 'center', 'max', 'spaceBetween', 'start', 'end']).optional().default('min').describe('Alignment sumbu utama (flex-direction)'),
+        crossGap: z.number().optional().describe('Jarak antar baris jika wrapping aktif'),
+        mainAlign: z.enum(['min', 'center', 'max', 'spaceBetween', 'spaceAround', 'spaceEvenly', 'start', 'end']).optional().default('min').describe('Alignment sumbu utama (flex-direction)'),
         crossAlign: z.enum(['min', 'center', 'max', 'baseline', 'start', 'end']).optional().default('min').describe('Alignment sumbu silang (cross-axis)'),
         sizingH: z.enum(['fixed', 'hug', 'fill']).optional().default('fill').describe('Perilaku ukuran horizontal'),
         sizingV: z.enum(['fixed', 'hug', 'fill']).optional().default('hug').describe('Perilaku ukuran vertikal'),
-        bgColor: z.string().optional().describe('Warna latar solid hex (contoh: #1E293B)'),
-        borderColor: z.string().optional().describe('Warna border hex (contoh: #374151)'),
+        bgColor: z.string().optional().describe('Warna latar solid hex (contoh: #131B2CD9)'),
+        borderColor: z.string().optional().describe('Warna border hex (contoh: #25334D)'),
         borderWidth: z.number().optional().describe('Ketebalan border pixel'),
-        cornerRadius: z.number().optional().describe('Radius sudut kelengkungan (border-radius)')
+        cornerRadius: z.number().optional().describe('Radius sudut kelengkungan (border-radius)'),
+        cornerSmoothing: z.number().optional().describe('Kehalusan sudut squircle (0-1, default: 0.6)'),
+        effects: z.array(z.record(z.string(), z.any())).optional().describe('Daftar efek visual seperti dropShadow, layerBlur, backgroundBlur')
       })
     },
     async (params) => {
@@ -138,11 +141,11 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     ['figcraft_create_component', 'create_component'],
     {
       description:
-        'Hasilkan komponen UI terstruktur siap pakai tanpa layer berantakan: "navbar" (logo + links + cta), "hero" (badge + multiline display + subtitle + cta buttons), atau "card" (media placeholder + tag + title + body + price/cta).',
+        'Hasilkan komponen UI modern Luxury Obsidian Titanium siap pakai dengan anti-overflow guarantee: "navbar" (logo + links + radiant CTA), "hero" (neon emerald badge + multiline display + dual buttons), atau "card" (media slot + tag + title + body + radiant gold price/cta).',
       inputSchema: z.object({
         type: z.enum(['navbar', 'hero', 'card']).describe('Tipe komponen yang dibuat'),
         parent: z.number().describe('ID frame kontainer tempat komponen diletakkan'),
-        options: z.record(z.string(), z.any()).describe('Opsi komponen (title, subtitle, badge, brandName, links, price, ctaText, dll)')
+        options: z.record(z.string(), z.any()).describe('Opsi komponen (title, subtitle, badge, brandName, links, price, buttonLabel, theme, dll)')
       })
     },
     async ({ type, parent, options }) => {
@@ -167,12 +170,74 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 5: Layout & Quality Audit (Harness Bridge)
+  // Tool 5: Anti-Overflow Auto-Fixer
+  registerWithAliases(
+    ['figcraft_fix_overflow', 'fix_overflow'],
+    {
+      description:
+        'Pindai seluruh kanvas dan perbaiki otomatis teks yang melebihi batas kotaknya (text overflow) serta bersihkan karakter \\n escaped mentah menjadi multiline wraps rapi dengan textAutoResize: "height".',
+      inputSchema: z.object({})
+    },
+    async () => {
+      try {
+        const result = await client.fixCanvasOverflow();
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `🛠️ [Perbaikan Overflow Otomatis Selesai]:\n` +
+                `- Total node diperbaiki: ${result.repairedCount}\n` +
+                (result.repairedNodes.length === 0
+                  ? 'Kanvas sudah rapi! Tidak ada teks atau elemen yang melebihi batas kontainer.\n'
+                  : result.repairedNodes.map((n, i) => `${i + 1}. [ID ${n.id}] "${n.name}": ${n.action}`).join('\n'))
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal memperbaiki overflow kanvas: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 6: Apply Luxury Obsidian Titanium Theme
+  registerWithAliases(
+    ['figcraft_apply_luxury_theme', 'apply_luxury_theme'],
+    {
+      description:
+        'Ubah palet warna dan styling kanvas aktif dari yang kaku/kusam ke tema modern Luxury Obsidian & Amber Gold / Radiant Cyan (tombol emas berkilau dengan glow shadow, kartu kaca glassmorphism, dan badge emerald neon).',
+      inputSchema: z.object({})
+    },
+    async () => {
+      try {
+        const result = await client.applyLuxuryTheme();
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `✨ [Tema Luxury Obsidian Titanium Berhasil Diterapkan]:\n${result.status}\nTombol, kartu, harga, dan badge telah ditingkatkan ke estetika modern berkelas tinggi.`
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal menerapkan tema luxury: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 7: Layout & Quality Audit (Harness Bridge)
   registerWithAliases(
     ['figcraft_audit_layout', 'audit_layout'],
     {
       description:
-        'Audit kualitas layout kanvas secara otomatis untuk mendeteksi layer berantakan (flat layers tanpa Auto-Layout), teks dengan karakter \\n escaped mentah, serta kelengkapan artboard responsif. Menghasilkan skor kualitas dan payload bukti untuk Harness MCP quality checkpoints.',
+        'Audit kualitas layout kanvas secara otomatis untuk mendeteksi teks yang meluber melebihi kotak (overflow), teks escaped \\n mentah, hierarki flat layers tanpa Auto-Layout, serta kelengkapan artboard responsif. Menghasilkan skor kualitas dan payload bukti untuk Harness MCP quality checkpoints.',
       inputSchema: z.object({})
     },
     async () => {
@@ -184,14 +249,16 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
               type: 'text',
               text: `📊 [Laporan Kualitas Desain Kanvas FigCraft]:\n` +
                 `- Skor Kualitas: ${audit.score}/100 (${audit.passed ? '✅ LOLOS' : '⚠️ BUTUH PERBAIKAN'})\n` +
+                `- Status Overflow: ${audit.overflowCount === 0 ? '✅ 0 Overflow' : `❌ ${audit.overflowCount} TEKS MELEBIHI KOTAK!`}\n` +
+                `- Karakter Escaped \\n: ${audit.escapedNewlineCount === 0 ? '✅ Bersih' : `❌ ${audit.escapedNewlineCount} Literal \\n!`}\n` +
                 `- Total Node: ${audit.totalNodes}\n` +
                 `- Kontainer Auto-Layout: ${audit.autoLayoutFrameCount}\n` +
-                `- Layer Primitif Tak Terbungkus (Spaghetti): ${audit.flatRootChildrenCount}\n` +
+                `- Layer Primitif Tak Terbungkus: ${audit.flatRootChildrenCount}\n` +
                 `- Cakupan Responsif: Desktop=${audit.responsiveArtboards.desktopFound ? '✅' : '❌'}, Tablet=${audit.responsiveArtboards.tabletFound ? '✅' : '❌'}, Mobile=${audit.responsiveArtboards.mobileFound ? '✅' : '❌'}\n\n` +
-                `📋 Pelanggaran Terdeteksi (${audit.violations.length}):\n` +
+                `📋 Detail Evaluasi (${audit.violations.length}):\n` +
                 (audit.violations.length === 0
-                  ? 'Tidak ada pelanggaran! Layout bersih, terstruktur, dan responsif.\n'
-                  : audit.violations.map((v, i) => `${i + 1}. [${v.severity.toUpperCase()}] ${v.message}\n   💡 Saran: ${v.recommendation}`).join('\n')) +
+                  ? 'Sempurna! Semua teks berada di dalam kotak dengan rapi, layout terstruktur, dan responsif.\n'
+                  : audit.violations.map((v, i) => `${i + 1}. [${v.severity.toUpperCase()}] ${v.message}\n   💡 Solusi: ${v.recommendation}`).join('\n')) +
                 `\n\n🛡️ [Bukti Kesiapan Harness MCP]:\n${JSON.stringify(audit.harnessEvidence, null, 2)}`
             }
           ]
@@ -206,12 +273,12 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 6: Create Node (Live Canvas Generation)
+  // Tool 8: Create Node (Live Canvas Generation)
   registerWithAliases(
     ['figcraft_create_node', 'create_node'],
     {
       description:
-        'Langkah 3 Kanonik: Gambar elemen visual (frame, rectangle, text, ellipse, button, dll) secara LIVE langsung di kanvas yang sedang terbuka dengan pembersihan otomatis karakter \\n.',
+        'Langkah 3 Kanonik: Gambar elemen visual (frame, rectangle, text, ellipse, button, dll) secara LIVE langsung di kanvas dengan pembersihan otomatis karakter \\n dan perlindungan otomatis dari teks meluber (textAutoResize: "height").',
       inputSchema: z.object({
         type: z
           .enum(['frame', 'rectangle', 'ellipse', 'text', 'section', 'vector', 'component', 'line', 'arrow', 'star', 'polygon'])
@@ -222,8 +289,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         y: z.number().optional().describe('Posisi Y relatif terhadap parent'),
         width: z.number().optional().describe('Lebar layer dalam pixel'),
         height: z.number().optional().describe('Tinggi layer dalam pixel'),
-        text: z.string().optional().describe('Isi teks (jika type = text, otomatis disanitasi dari literal \\n)'),
-        props: z.record(z.string(), z.any()).optional().describe('Properti visual: fills, strokes, cornerRadius, fontSize, fontFamily, fontWeight, layout, gap, padding, dll.')
+        text: z.string().optional().describe('Isi teks (jika type = text, otomatis disanitasi dari literal \\n dan dibungkus rapi)'),
+        props: z.record(z.string(), z.any()).optional().describe('Properti visual: fills, strokes, cornerRadius, cornerSmoothing, effects, fontSize, fontFamily, fontWeight, layout, gap, padding, textAutoResize, dll.')
       })
     },
     async (params) => {
@@ -247,11 +314,11 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 7: Set Properties
+  // Tool 9: Set Properties
   registerWithAliases(
     ['figcraft_set_properties', 'set_properties'],
     {
-      description: 'Ubah properti visual (fills, stroke, tipografi, corner radius, auto-layout) pada node yang ada di kanvas.',
+      description: 'Ubah properti visual (fills, stroke, tipografi, corner radius, corner smoothing, effects, auto-layout) pada node yang ada di kanvas.',
       inputSchema: z.object({
         id: z.number().describe('ID layer yang akan diubah'),
         props: z.record(z.string(), z.any()).describe('Properti yang diubah')
@@ -278,7 +345,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 8: Batch Execution
+  // Tool 10: Batch Execution
   registerWithAliases(
     ['figcraft_batch', 'batch'],
     {
@@ -301,7 +368,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
           content: [
             {
               type: 'text',
-              text: `✅ Batch ${commands.length} perintah berhasil dieksekusi di kanvas FigCraft!\nDetail: ${JSON.stringify(res)}`
+              text: `✅ Batch ${commands.length} perintah berhasil dieksekusi di kanvas FigCraft!`
             }
           ]
         };
@@ -315,7 +382,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 9: Inspect Document
+  // Tool 11: Inspect Document
   registerWithAliases(
     ['figcraft_inspect_document', 'inspect_document'],
     {
@@ -346,7 +413,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 10: Save File
+  // Tool 12: Save File
   registerWithAliases(
     ['figcraft_save_file', 'save_file'],
     {
@@ -376,7 +443,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 11: Screenshot / Export
+  // Tool 13: Screenshot / Export
   registerWithAliases(
     ['figcraft_screenshot', 'screenshot'],
     {
@@ -407,7 +474,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 12: Ensure GUI Live Window
+  // Tool 14: Ensure GUI Live Window
   registerWithAliases(
     ['figcraft_ensure_gui', 'ensure_gui'],
     {
@@ -435,7 +502,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 13: Open File
+  // Tool 15: Open File
   registerWithAliases(
     ['figcraft_open_file', 'open_file'],
     {

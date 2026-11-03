@@ -4,7 +4,7 @@ import type { ResponsiveSystemResult } from './types.js';
 
 export interface ResponsiveArtboardsOptions {
   projectName?: string;
-  theme?: 'dark' | 'light';
+  theme?: 'luxury' | 'dark' | 'light';
   desktopWidth?: number;
   desktopHeight?: number;
   tabletWidth?: number;
@@ -18,7 +18,7 @@ export interface NavbarOptions {
   brandName: string;
   links?: string[];
   ctaText?: string;
-  theme?: 'dark' | 'light';
+  theme?: 'luxury' | 'dark' | 'light';
   width?: number;
 }
 
@@ -29,7 +29,7 @@ export interface HeroSectionOptions {
   subtitle: string;
   primaryCta?: string;
   secondaryCta?: string;
-  theme?: 'dark' | 'light';
+  theme?: 'luxury' | 'dark' | 'light';
   width?: number;
 }
 
@@ -41,28 +41,22 @@ export interface CardOptions {
   body?: string;
   price?: string;
   buttonLabel?: string;
-  theme?: 'dark' | 'light';
+  theme?: 'luxury' | 'dark' | 'light';
   width?: number;
   height?: number;
 }
 
-export interface MetricItem {
-  value: string;
-  label: string;
-  trend?: string;
-}
-
 /**
  * Creates 3 synchronized responsive artboards side-by-side on the canvas:
- * 1. Desktop Artboard (default 1440px wide) at x: 0
- * 2. Tablet Artboard (default 768px wide) at x: 1540
- * 3. Mobile Artboard (default 375px wide) at x: 2408
+ * 1. Desktop Artboard (1440px wide) at x: 0
+ * 2. Tablet Artboard (768px wide) at x: 1540
+ * 3. Mobile Artboard (375px wide) at x: 2408
  */
 export async function createResponsiveArtboards(
   client: FigCraftClient,
   options: ResponsiveArtboardsOptions = {}
 ): Promise<ResponsiveSystemResult> {
-  const themeMode = options.theme || 'dark';
+  const themeMode = options.theme || 'luxury';
   const tokens = DESIGN_TOKENS.colors[themeMode];
 
   const desktopW = options.desktopWidth || 1440;
@@ -76,7 +70,7 @@ export async function createResponsiveArtboards(
   const tabletX = desktopW + gapBetweenArtboards;
   const mobileX = tabletX + tabletW + gapBetweenArtboards;
 
-  // 1. Create Desktop Artboard
+  // 1. Desktop Artboard
   const desktopNode = await client.createAutoLayoutFrame({
     name: `🖥️ Desktop — ${options.projectName || 'Storefront'} (1440px)`,
     direction: 'vertical',
@@ -91,7 +85,7 @@ export async function createResponsiveArtboards(
     bgColor: tokens.bg
   });
 
-  // 2. Create Tablet Artboard
+  // 2. Tablet Artboard
   const tabletNode = await client.createAutoLayoutFrame({
     name: `📱 Tablet — ${options.projectName || 'Storefront'} (768px)`,
     direction: 'vertical',
@@ -106,7 +100,7 @@ export async function createResponsiveArtboards(
     bgColor: tokens.bg
   });
 
-  // 3. Create Mobile Artboard
+  // 3. Mobile Artboard
   const mobileNode = await client.createAutoLayoutFrame({
     name: `📲 Mobile — ${options.projectName || 'Storefront'} (375px)`,
     direction: 'vertical',
@@ -130,20 +124,20 @@ export async function createResponsiveArtboards(
 }
 
 /**
- * Creates an Auto-Layout Header/Navbar container with brand logo, nav links, and CTA button.
+ * Creates a Glassmorphism Navbar container with brand logo, nav links, and radiant CTA button.
  */
 export async function createNavbarComponent(
   client: FigCraftClient,
   opts: NavbarOptions
 ): Promise<{ containerId: number }> {
-  const theme = opts.theme || 'dark';
+  const theme = opts.theme || 'luxury';
   const tokens = DESIGN_TOKENS.colors[theme];
 
   const navContainer = await client.createAutoLayoutFrame({
     name: 'Navbar',
     parent: opts.parent,
     direction: 'horizontal',
-    padding: [20, 48, 20, 48],
+    padding: [18, 48, 18, 48],
     gap: 32,
     mainAlign: 'spaceBetween',
     crossAlign: 'center',
@@ -152,7 +146,8 @@ export async function createNavbarComponent(
     width: opts.width,
     bgColor: tokens.surface,
     borderColor: tokens.border,
-    borderWidth: 1
+    borderWidth: 1,
+    effects: [{ type: 'dropShadow', color: '#00000060', offset: [0, 4], radius: 20 }]
   });
 
   // Brand / Logo Stack
@@ -170,12 +165,12 @@ export async function createNavbarComponent(
   });
 
   // Nav Links horizontal stack
-  const links = opts.links || ['Products', 'Solutions', 'Features', 'Docs'];
+  const links = opts.links || ['Koleksi 3D', 'Living & Studio', 'Material Lab', 'Filosofi Desain'];
   const linksContainer = await client.createAutoLayoutFrame({
     name: 'Nav Links',
     parent: navContainer.id,
     direction: 'horizontal',
-    gap: 24,
+    gap: 28,
     padding: 0,
     mainAlign: 'center',
     crossAlign: 'center',
@@ -197,20 +192,21 @@ export async function createNavbarComponent(
     });
   }
 
-  // CTA Button
+  // CTA Button (Radiant Amber Gold)
   if (opts.ctaText) {
     const ctaBtn = await client.createAutoLayoutFrame({
       name: 'Nav CTA Button',
       parent: navContainer.id,
       direction: 'horizontal',
-      padding: [10, 20, 10, 20],
+      padding: [10, 22, 10, 22],
       gap: 8,
       mainAlign: 'center',
       crossAlign: 'center',
       sizingH: 'hug',
       sizingV: 'hug',
       bgColor: tokens.primary,
-      cornerRadius: DESIGN_TOKENS.radii.md
+      cornerRadius: DESIGN_TOKENS.radii.md,
+      effects: [{ type: 'dropShadow', color: tokens.primaryGlow, offset: [0, 4], radius: 14 }]
     });
 
     await client.createNode({
@@ -220,8 +216,8 @@ export async function createNavbarComponent(
       text: sanitizeText(opts.ctaText),
       props: {
         fontSize: 14,
-        fontWeight: 600,
-        fills: [{ type: 'solid', color: '#FFFFFF' }]
+        fontWeight: 800,
+        fills: [{ type: 'solid', color: '#0B0F17' }]
       }
     });
   }
@@ -230,13 +226,13 @@ export async function createNavbarComponent(
 }
 
 /**
- * Creates an Auto-Layout Hero section with eyebrow badge, display title, subtitle, and CTA buttons.
+ * Creates an Auto-Layout Hero section with Neon Emerald badge, multiline headline, and dual CTA buttons.
  */
 export async function createHeroComponent(
   client: FigCraftClient,
   opts: HeroSectionOptions
 ): Promise<{ containerId: number }> {
-  const theme = opts.theme || 'dark';
+  const theme = opts.theme || 'luxury';
   const tokens = DESIGN_TOKENS.colors[theme];
 
   const heroContainer = await client.createAutoLayoutFrame({
@@ -252,7 +248,7 @@ export async function createHeroComponent(
     width: opts.width
   });
 
-  // Eyebrow Badge
+  // Eyebrow Badge (Neon Emerald Pill)
   if (opts.badge) {
     const badgeFrame = await client.createAutoLayoutFrame({
       name: 'Eyebrow Badge',
@@ -264,8 +260,8 @@ export async function createHeroComponent(
       crossAlign: 'center',
       sizingH: 'hug',
       sizingV: 'hug',
-      bgColor: theme === 'dark' ? '#1E293B' : '#E0E7FF',
-      borderColor: theme === 'dark' ? '#3B82F6' : '#C7D2FE',
+      bgColor: tokens.badgeEmeraldBg,
+      borderColor: tokens.badgeEmeraldBorder,
       borderWidth: 1,
       cornerRadius: DESIGN_TOKENS.radii.full
     });
@@ -274,16 +270,16 @@ export async function createHeroComponent(
       type: 'text',
       name: 'Badge Text',
       parent: badgeFrame.id,
-      text: sanitizeText(opts.badge),
+      text: `● ${sanitizeText(opts.badge)}`,
       props: {
-        fontSize: 12,
-        fontWeight: 600,
-        fills: [{ type: 'solid', color: tokens.primary }]
+        fontSize: 11,
+        fontWeight: 700,
+        fills: [{ type: 'solid', color: tokens.badgeEmeraldText }]
       }
     });
   }
 
-  // Display Title (Sanitized multiline!)
+  // Display Title (Sanitized multiline with automatic wrapping)
   await client.createNode({
     type: 'text',
     name: 'Hero Headline',
@@ -292,8 +288,10 @@ export async function createHeroComponent(
     props: {
       fontSize: DESIGN_TOKENS.typography.display.fontSize,
       fontWeight: DESIGN_TOKENS.typography.display.fontWeight,
-      lineHeight: 1.15,
+      lineHeight: '115%',
       letterSpacing: -1,
+      textAutoResize: 'height',
+      sizingH: 'fill',
       fills: [{ type: 'solid', color: tokens.text }]
     }
   });
@@ -305,9 +303,11 @@ export async function createHeroComponent(
     parent: heroContainer.id,
     text: sanitizeText(opts.subtitle),
     props: {
-      fontSize: 18,
+      fontSize: 17,
       fontWeight: 400,
-      lineHeight: 1.5,
+      lineHeight: '150%',
+      textAutoResize: 'height',
+      sizingH: 'fill',
       fills: [{ type: 'solid', color: tokens.textMuted }]
     }
   });
@@ -338,7 +338,8 @@ export async function createHeroComponent(
         sizingH: 'hug',
         sizingV: 'hug',
         bgColor: tokens.primary,
-        cornerRadius: DESIGN_TOKENS.radii.md
+        cornerRadius: DESIGN_TOKENS.radii.md,
+        effects: [{ type: 'dropShadow', color: tokens.primaryGlow, offset: [0, 6], radius: 24 }]
       });
 
       await client.createNode({
@@ -348,8 +349,8 @@ export async function createHeroComponent(
         text: sanitizeText(opts.primaryCta),
         props: {
           fontSize: 15,
-          fontWeight: 600,
-          fills: [{ type: 'solid', color: '#FFFFFF' }]
+          fontWeight: 800,
+          fills: [{ type: 'solid', color: '#0B0F17' }]
         }
       });
     }
@@ -365,10 +366,11 @@ export async function createHeroComponent(
         crossAlign: 'center',
         sizingH: 'hug',
         sizingV: 'hug',
-        bgColor: 'transparent',
+        bgColor: '#1E293B80',
         borderColor: tokens.border,
         borderWidth: 1,
-        cornerRadius: DESIGN_TOKENS.radii.md
+        cornerRadius: DESIGN_TOKENS.radii.md,
+        effects: [{ type: 'dropShadow', color: '#00000040', offset: [0, 4], radius: 12 }]
       });
 
       await client.createNode({
@@ -389,13 +391,13 @@ export async function createHeroComponent(
 }
 
 /**
- * Creates an Auto-Layout Card component with media slot, content stack, and action button.
+ * Creates a Modern Glassmorphism Card with media slot, anti-overflow multiline text, and radiant gold CTA.
  */
 export async function createCardComponent(
   client: FigCraftClient,
   opts: CardOptions
 ): Promise<{ cardId: number }> {
-  const theme = opts.theme || 'dark';
+  const theme = opts.theme || 'luxury';
   const tokens = DESIGN_TOKENS.colors[theme];
 
   const card = await client.createAutoLayoutFrame({
@@ -413,17 +415,21 @@ export async function createCardComponent(
     bgColor: tokens.card,
     borderColor: tokens.border,
     borderWidth: 1,
-    cornerRadius: DESIGN_TOKENS.radii.lg
+    cornerRadius: DESIGN_TOKENS.radii.xl,
+    cornerSmoothing: 0.6,
+    effects: [{ type: 'dropShadow', color: '#00000080', offset: [0, 12], radius: 32 }]
   });
 
-  // Media / Illustration slot
+  // Media / 3D illustration slot
   await client.createNode({
     type: 'rectangle',
     name: 'Media Placeholder',
     parent: card.id,
     height: 160,
     props: {
-      fills: [{ type: 'solid', color: theme === 'dark' ? '#111827' : '#E2E8F0' }],
+      fills: [{ type: 'solid', color: '#1B2438' }],
+      strokes: [{ type: 'solid', color: '#25334D' }],
+      strokeWeight: 1,
       cornerRadius: DESIGN_TOKENS.radii.md,
       sizingH: 'fill'
     }
@@ -441,8 +447,10 @@ export async function createCardComponent(
       crossAlign: 'center',
       sizingH: 'hug',
       sizingV: 'hug',
-      bgColor: theme === 'dark' ? '#1E293B' : '#DBEAFE',
-      cornerRadius: DESIGN_TOKENS.radii.sm
+      bgColor: tokens.badgeEmeraldBg,
+      borderColor: tokens.badgeEmeraldBorder,
+      borderWidth: 1,
+      cornerRadius: DESIGN_TOKENS.radii.full
     });
 
     await client.createNode({
@@ -452,8 +460,8 @@ export async function createCardComponent(
       text: sanitizeText(opts.tag),
       props: {
         fontSize: 11,
-        fontWeight: 600,
-        fills: [{ type: 'solid', color: tokens.primary }]
+        fontWeight: 700,
+        fills: [{ type: 'solid', color: tokens.badgeEmeraldText }]
       }
     });
   }
@@ -467,11 +475,13 @@ export async function createCardComponent(
     props: {
       fontSize: DESIGN_TOKENS.typography.h3.fontSize,
       fontWeight: DESIGN_TOKENS.typography.h3.fontWeight,
+      textAutoResize: 'height',
+      sizingH: 'fill',
       fills: [{ type: 'solid', color: tokens.text }]
     }
   });
 
-  // Body
+  // Body Description (Anti-Overflow Guaranteed!)
   if (opts.body) {
     await client.createNode({
       type: 'text',
@@ -481,7 +491,9 @@ export async function createCardComponent(
       props: {
         fontSize: 14,
         fontWeight: 400,
-        lineHeight: 1.45,
+        lineHeight: '145%',
+        textAutoResize: 'height',
+        sizingH: 'fill',
         fills: [{ type: 'solid', color: tokens.textMuted }]
       }
     });
@@ -509,8 +521,8 @@ export async function createCardComponent(
         text: sanitizeText(opts.price),
         props: {
           fontSize: 18,
-          fontWeight: 700,
-          fills: [{ type: 'solid', color: tokens.accent }]
+          fontWeight: 800,
+          fills: [{ type: 'solid', color: tokens.primary }]
         }
       });
     }
@@ -520,14 +532,15 @@ export async function createCardComponent(
         name: 'Action Button',
         parent: bottomRow.id,
         direction: 'horizontal',
-        padding: [8, 16, 8, 16],
+        padding: [8, 18, 8, 18],
         gap: 6,
         mainAlign: 'center',
         crossAlign: 'center',
         sizingH: 'hug',
         sizingV: 'hug',
         bgColor: tokens.primary,
-        cornerRadius: DESIGN_TOKENS.radii.sm
+        cornerRadius: DESIGN_TOKENS.radii.sm,
+        effects: [{ type: 'dropShadow', color: tokens.primaryGlow, offset: [0, 4], radius: 12 }]
       });
 
       await client.createNode({
@@ -537,8 +550,8 @@ export async function createCardComponent(
         text: sanitizeText(opts.buttonLabel),
         props: {
           fontSize: 13,
-          fontWeight: 600,
-          fills: [{ type: 'solid', color: '#FFFFFF' }]
+          fontWeight: 800,
+          fills: [{ type: 'solid', color: '#0B0F17' }]
         }
       });
     }
@@ -546,4 +559,3 @@ export async function createCardComponent(
 
   return { cardId: card.id };
 }
-

@@ -8,13 +8,37 @@ import type {
 
 export const DESIGN_TOKENS = {
   colors: {
+    // Modern Luxury Obsidian Titanium Theme
+    luxury: {
+      bg: '#090D14',
+      surface: '#111827',
+      card: '#131B2CD9',
+      cardHover: '#1A243ACC',
+      border: '#25334D',
+      borderHighlight: '#38BDF833',
+      primary: '#F59E0B', // Radiant Amber Gold
+      primaryGlow: '#F59E0B4D',
+      accent: '#38BDF8', // Electric Ice Cyan
+      accentEmerald: '#10B981', // Vivid Emerald Neon
+      badgeEmeraldBg: '#064E3B66',
+      badgeEmeraldBorder: '#10B98180',
+      badgeEmeraldText: '#34D399',
+      text: '#F8FAFC',
+      textMuted: '#94A3B8'
+    },
     dark: {
       bg: '#0B0F17',
       surface: '#111827',
       card: '#1F2937',
       border: '#374151',
+      borderHighlight: '#3B82F633',
       primary: '#3B82F6',
+      primaryGlow: '#3B82F64D',
       accent: '#10B981',
+      accentEmerald: '#10B981',
+      badgeEmeraldBg: '#064E3B66',
+      badgeEmeraldBorder: '#10B98180',
+      badgeEmeraldText: '#34D399',
       text: '#F9FAFB',
       textMuted: '#9CA3AF'
     },
@@ -23,19 +47,25 @@ export const DESIGN_TOKENS = {
       surface: '#FFFFFF',
       card: '#F1F5F9',
       border: '#E2E8F0',
+      borderHighlight: '#2563EB33',
       primary: '#2563EB',
+      primaryGlow: '#2563EB40',
       accent: '#059669',
+      accentEmerald: '#059669',
+      badgeEmeraldBg: '#D1FAE5',
+      badgeEmeraldBorder: '#34D399',
+      badgeEmeraldText: '#065F46',
       text: '#0F172A',
       textMuted: '#64748B'
     }
   },
   typography: {
-    display: { fontSize: 44, fontWeight: 800, lineHeight: 1.15 },
-    h1: { fontSize: 32, fontWeight: 700, lineHeight: 1.25 },
-    h2: { fontSize: 24, fontWeight: 700, lineHeight: 1.3 },
-    h3: { fontSize: 18, fontWeight: 600, lineHeight: 1.4 },
-    body: { fontSize: 15, fontWeight: 400, lineHeight: 1.5 },
-    caption: { fontSize: 12, fontWeight: 500, lineHeight: 1.4 }
+    display: { fontSize: 44, fontWeight: 800, lineHeight: '115%' },
+    h1: { fontSize: 32, fontWeight: 700, lineHeight: '125%' },
+    h2: { fontSize: 24, fontWeight: 700, lineHeight: '130%' },
+    h3: { fontSize: 18, fontWeight: 600, lineHeight: '140%' },
+    body: { fontSize: 15, fontWeight: 400, lineHeight: '150%' },
+    caption: { fontSize: 12, fontWeight: 500, lineHeight: '140%' }
   },
   spacing: {
     xs: 4,
@@ -43,36 +73,36 @@ export const DESIGN_TOKENS = {
     md: 16,
     lg: 24,
     xl: 32,
-    xxl: 48
+    xxl: 48,
+    xxxl: 64
   },
   radii: {
     sm: 6,
     md: 10,
     lg: 16,
+    xl: 20,
+    xxl: 24,
     full: 9999
   }
 };
 
 /**
- * Normalizes user-supplied alignment enums to FigCraft engine's expected strings:
- * - 'start' -> 'min'
- * - 'end' -> 'max'
- * - 'space-between' / 'spaceBetween' -> 'spaceBetween'
+ * Normalizes user-supplied alignment enums to FigCraft engine's expected strings.
  */
-export function normalizeMainAlign(align?: AutoLayoutAlignMain): 'min' | 'center' | 'max' | 'spaceBetween' {
+export function normalizeMainAlign(align?: AutoLayoutAlignMain): 'min' | 'center' | 'max' | 'spaceBetween' | 'spaceAround' | 'spaceEvenly' {
   if (!align) return 'min';
   const lower = align.toLowerCase();
   if (lower === 'start' || lower === 'min') return 'min';
   if (lower === 'end' || lower === 'max') return 'max';
   if (lower === 'center') return 'center';
   if (lower === 'spacebetween' || lower === 'space-between') return 'spaceBetween';
+  if (lower === 'spacearound' || lower === 'space-around') return 'spaceAround';
+  if (lower === 'spaceevenly' || lower === 'space-evenly') return 'spaceEvenly';
   return 'min';
 }
 
 /**
- * Normalizes cross alignment:
- * - 'start' -> 'min'
- * - 'end' -> 'max'
+ * Normalizes cross alignment.
  */
 export function normalizeCrossAlign(align?: AutoLayoutAlignCross): 'min' | 'center' | 'max' | 'baseline' {
   if (!align) return 'min';
@@ -110,6 +140,10 @@ export function buildAutoLayoutNodeParams(params: AutoLayoutFrameParams): Create
     sizingV: params.sizingV || 'hug'
   };
 
+  if (params.crossGap !== undefined) {
+    props.crossGap = params.crossGap;
+  }
+
   if (params.bgColor) {
     props.fills = [{ type: 'solid', color: params.bgColor }];
   }
@@ -121,6 +155,14 @@ export function buildAutoLayoutNodeParams(params: AutoLayoutFrameParams): Create
 
   if (params.cornerRadius !== undefined) {
     props.cornerRadius = params.cornerRadius;
+  }
+
+  if (params.cornerSmoothing !== undefined) {
+    props.cornerSmoothing = params.cornerSmoothing;
+  }
+
+  if (params.effects && params.effects.length > 0) {
+    props.effects = params.effects;
   }
 
   if (params.opacity !== undefined) {
@@ -138,4 +180,3 @@ export function buildAutoLayoutNodeParams(params: AutoLayoutFrameParams): Create
     props
   };
 }
-

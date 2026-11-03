@@ -5,6 +5,7 @@ import { execSync, spawn } from 'node:child_process';
 import { createCanonicalFigCraftFile } from './template.js';
 import {
   buildAutoLayoutNodeParams,
+  DESIGN_TOKENS,
   normalizeCrossAlign,
   normalizeMainAlign,
   sanitizeText
@@ -16,7 +17,7 @@ import {
   createResponsiveArtboards,
   type ResponsiveArtboardsOptions
 } from './components.js';
-import { auditCanvasDocument } from './audit.js';
+import { auditCanvasDocument, autoRepairCanvasOverflows } from './audit.js';
 import type {
   AutoLayoutFrameParams,
   CreateNodeParams,
@@ -175,7 +176,7 @@ export class FigCraftClient {
   }
 
   /**
-   * Creates a canvas node with automatic text sanitization and alignment normalization.
+   * Creates a canvas node with automatic text sanitization, auto-wrapping, and alignment normalization.
    */
   public async createNode(params: CreateNodeParams) {
     const normalizedParams: Record<string, unknown> = { ...params };
@@ -188,18 +189,27 @@ export class FigCraftClient {
       normalizedParams.characters = sanitizeText(params.characters);
     }
 
-    // 2. Normalization of Auto-Layout alignments
-    if (params.props) {
-      const normalizedProps: Record<string, unknown> = { ...params.props };
-      if (params.props.mainAlign) {
-        normalizedProps.mainAlign = normalizeMainAlign(params.props.mainAlign as any);
-      }
-      if (params.props.crossAlign) {
-        normalizedProps.crossAlign = normalizeCrossAlign(params.props.crossAlign as any);
-      }
-      normalizedParams.props = normalizedProps;
+    // 2. Normalization of Auto-Layout alignments & props
+    const props = params.props ? { ...params.props } : {};
+    if (props.mainAlign) {
+      props.mainAlign = normalizeMainAlign(props.mainAlign as any);
+    }
+    if (props.crossAlign) {
+      props.crossAlign = normalizeCrossAlign(props.crossAlign as any);
     }
 
+    // 3. Automatic Anti-Overflow for Text Nodes: Default to textAutoResize: 'height'
+    if (params.type === 'text') {
+      if (!props.textAutoResize) {
+        // If text contains newlines or has width, default to height wrapping so it doesn't overflow!
+        const textContent = (normalizedParams.text as string) || (normalizedParams.characters as string) || '';
+        if (textContent.includes('\n') || params.width !== undefined || props.sizingH === 'fill') {
+          props.textAutoResize = 'height';
+        }
+      }
+    }
+
+    normalizedParams.props = props;
     return this.executeEngineCommand<{ id: number }>('node.create', normalizedParams);
   }
 
@@ -245,11 +255,24 @@ export class FigCraftClient {
     if (props.crossAlign) {
       normalizedProps.crossAlign = normalizeCrossAlign(props.crossAlign as any);
     }
+    if (typeof props.characters === 'string') {
+      normalizedProps.characters = sanitizeText(props.characters);
+    }
     return this.executeEngineCommand('node.set', { id, props: normalizedProps });
   }
 
   public async batch(commands: Array<{ command: string; params: Record<string, unknown> }>) {
-    return this.executeEngineCommand('batch', { commands });
+    const results = [];
+    for (const cmd of commands) {
+      if (cmd.command === 'node.set') {
+        const id = (cmd.params as any).id;
+        const props = (cmd.params as any).props;
+        results.push(await this.setProperties(id, props));
+      } else {
+        results.push(await this.executeEngineCommand(cmd.command, cmd.params));
+      }
+    }
+    return results;
   }
 
   public async inspectDocument(depth: number = 4, allPages: boolean = false): Promise<DocumentSummary> {
@@ -259,11 +282,107 @@ export class FigCraftClient {
 
   /**
    * Runs an automated design and layout quality audit on the active canvas.
-   * Checks for flat layers, unescaped text strings, and responsive coverage.
+   * Checks for overflow boundaries, flat layers, unescaped text strings, and responsive coverage.
    */
   public async auditLayout(): Promise<LayoutAuditReport> {
     const doc = await this.inspectDocument(6, true);
     return auditCanvasDocument(doc);
+  }
+
+  /**
+   * Automatically repairs all overflowing text nodes and escaped newlines on the active canvas.
+   */
+  public async fixCanvasOverflow(): Promise<{ repairedCount: number; repairedNodes: Array<{ id: number; name: string; action: string }> }> {
+    return autoRepairCanvasOverflows(this);
+  }
+
+  /**
+   * Applies the Modern Luxury Obsidian Titanium theme across key canvas containers.
+   */
+  public async applyLuxuryTheme(): Promise<{ status: string }> {
+    const doc = await this.inspectDocument(6, true);
+    const tokens = DESIGN_TOKENS.colors.luxury;
+    let updated = 0;
+
+    const traverse = async (node: any) => {
+      if (!node.id) return;
+      const name = (node.name || '').toLowerCase();
+      const nodeType = (node.type || '').toLowerCase();
+
+      // CTA Buttons (Gold glow)
+      if (name.includes('cta') && (name.includes('btn') || name.includes('1') || name.includes('cart') || name.includes('pay'))) {
+        if (nodeType === 'frame') {
+          await this.setProperties(node.id, {
+            fills: [{ type: 'solid', color: tokens.primary }],
+            cornerRadius: 12,
+            effects: [{ type: 'dropShadow', color: tokens.primaryGlow, offset: [0, 6], radius: 24 }]
+          });
+          updated++;
+        }
+      }
+
+      // Cards (Obsidian Glass)
+      if (name.includes('card') || name.includes('box') || name.includes('stage') || name.includes('spec')) {
+        if (nodeType === 'frame') {
+          await this.setProperties(node.id, {
+            fills: [{ type: 'solid', color: tokens.card }],
+            strokes: [{ type: 'solid', color: tokens.border }],
+            strokeWeight: 1,
+            cornerRadius: 20,
+            cornerSmoothing: 0.6,
+            effects: [{ type: 'dropShadow', color: '#00000080', offset: [0, 12], radius: 32 }]
+          });
+          updated++;
+        }
+      }
+
+      // Badges
+      if (name.includes('badge')) {
+        if (nodeType === 'frame') {
+          await this.setProperties(node.id, {
+            fills: [{ type: 'solid', color: tokens.badgeEmeraldBg }],
+            strokes: [{ type: 'solid', color: tokens.badgeEmeraldBorder }],
+            strokeWeight: 1,
+            cornerRadius: 9999
+          });
+          updated++;
+        } else if (nodeType === 'text') {
+          await this.setProperties(node.id, {
+            fills: [{ type: 'solid', color: tokens.badgeEmeraldText }],
+            fontWeight: 700
+          });
+          updated++;
+        }
+      }
+
+      // Prices
+      if (name.includes('price')) {
+        if (nodeType === 'text') {
+          await this.setProperties(node.id, {
+            fills: [{ type: 'solid', color: tokens.primary }],
+            fontWeight: 800
+          });
+          updated++;
+        }
+      }
+
+      if (node.children) {
+        for (const c of node.children) {
+          await traverse(c);
+        }
+      }
+    };
+
+    const pages = (doc.pages || []) as any[];
+    for (const p of pages) {
+      if (p.children) {
+        for (const root of p.children) {
+          await traverse(root);
+        }
+      }
+    }
+
+    return { status: `Berhasil memperbarui ${updated} elemen ke tema Luxury Obsidian Titanium!` };
   }
 
   public async saveFile(targetPath?: string) {
