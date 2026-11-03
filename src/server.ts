@@ -5,7 +5,7 @@ import { FigCraftClient } from './client.js';
 export function createFigCraftServer(client: FigCraftClient = new FigCraftClient()): McpServer {
   const server = new McpServer({
     name: 'figcraft-mcp-server',
-    version: '1.0.0'
+    version: '1.2.0'
   });
 
   const registerWithAliases = (
@@ -23,10 +23,10 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     ['figcraft_create_and_open', 'create_and_open'],
     {
       description:
-        'Langkah 1 & 2 Kanonik: Buat berkas kanvas (.figcraft) beserta namanya, dan otomatis LANGSUNG buka berkas tersebut di jendela aktif FigCraft GUI di monitor user tanpa perlu user buka manual.',
+        'Langkah 1 & 2 Kanonik: Buat berkas kanvas (.figcraft) beserta namanya di disk, lalu otomatis LANGSUNG buka berkas tersebut di jendela aktif FigCraft GUI di monitor pengguna tanpa perlu user buka manual.',
       inputSchema: z.object({
-        filePath: z.string().describe('Path file kanvas tujuan (contoh: test-ui/ux/app.figcraft)'),
-        projectName: z.string().optional().describe('Nama proyek desain (contoh: Smart Manufacturing Portal)')
+        filePath: z.string().describe('Path file kanvas tujuan (contoh: designs/storefront.figcraft)'),
+        projectName: z.string().optional().describe('Nama proyek desain (contoh: Aura 3D Commerce)')
       })
     },
     async ({ filePath, projectName }) => {
@@ -50,23 +50,29 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 2: Open File
+  // Tool 2: Responsive System Generator (Desktop 1440, Tablet 768, Mobile 375)
   registerWithAliases(
-    ['figcraft_open_file', 'open_file'],
+    ['figcraft_create_responsive_system', 'create_responsive_system'],
     {
-      description: 'Buka berkas desain (.figcraft, .json, .fig, .sketch, .svg, gambar) ke tab aktif di GUI FigCraft.',
+      description:
+        'Buat sistem 3 Artboard Responsif tersinkronisasi berdampingan di kanvas (Desktop 1440px, Tablet 768px, Mobile 375px) dengan Auto-Layout root frame vertikal dan tema warna konsisten. Terintegrasi penuh dengan Harness MCP responsive verification.',
       inputSchema: z.object({
-        filePath: z.string().describe('Path berkas yang akan dibuka')
+        projectName: z.string().optional().describe('Nama proyek/halaman (contoh: Storefront Landing Page)'),
+        theme: z.enum(['dark', 'light']).optional().default('dark').describe('Tema visual kanvas: dark atau light')
       })
     },
-    async ({ filePath }) => {
+    async ({ projectName, theme }) => {
       try {
-        const res = await client.openFile(filePath);
+        const res = await client.createResponsiveSystem({ projectName, theme });
         return {
           content: [
             {
               type: 'text',
-              text: `✅ Berkas berhasil dibuka di FigCraft GUI: ${filePath}\nDetail: ${JSON.stringify(res)}`
+              text: `✅ [Sistem Responsif Berhasil Dibuat di Kanvas FigCraft]:\n` +
+                `- 🖥️ Desktop Frame (1440x1024): ID ${res.desktop.id} (x: ${res.desktop.x})\n` +
+                `- 📱 Tablet Frame (768x1024): ID ${res.tablet.id} (x: ${res.tablet.x})\n` +
+                `- 📲 Mobile Frame (375x812): ID ${res.mobile.id} (x: ${res.mobile.x})\n\n` +
+                `Semua artboard telah dikonfigurasi dengan Auto-Layout vertikal siap diisi komponen atomik.`
             }
           ]
         };
@@ -74,18 +80,138 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         const msg = err instanceof Error ? err.message : String(err);
         return {
           isError: true,
-          content: [{ type: 'text', text: `❌ Gagal membuka file: ${msg}` }]
+          content: [{ type: 'text', text: `❌ Gagal membuat sistem responsif: ${msg}` }]
         };
       }
     }
   );
 
-  // Tool 3: Create Node (Live Canvas Generation)
+  // Tool 3: Auto-Layout Frame (Figma Flexbox Container)
+  registerWithAliases(
+    ['figcraft_create_autolayout_frame', 'create_autolayout_frame'],
+    {
+      description:
+        'Buat kontainer Auto-Layout (Figma-grade Flexbox) dengan arah vertikal/horizontal, padding, gap, alignment, dan sizing (hug/fill/fixed) sehingga elemen tidak berantakan atau bertumpuk.',
+      inputSchema: z.object({
+        name: z.string().describe('Nama kontainer frame (contoh: Navbar, Hero Stack, Card Grid)'),
+        parent: z.number().optional().describe('ID parent frame (default: halaman aktif)'),
+        direction: z.enum(['vertical', 'horizontal']).optional().default('vertical').describe('Arah Auto-Layout'),
+        width: z.number().optional().describe('Lebar frame jika sizingH fixed'),
+        height: z.number().optional().describe('Tinggi frame jika sizingV fixed'),
+        x: z.number().optional().describe('Posisi X (hanya untuk artboard root)'),
+        y: z.number().optional().describe('Posisi Y (hanya untuk artboard root)'),
+        padding: z.union([z.number(), z.tuple([z.number(), z.number(), z.number(), z.number()])]).optional().describe('Padding pixel: angka atau [T, R, B, L]'),
+        gap: z.number().optional().default(16).describe('Jarak antar elemen anak dalam pixel'),
+        mainAlign: z.enum(['min', 'center', 'max', 'spaceBetween', 'start', 'end']).optional().default('min').describe('Alignment sumbu utama (flex-direction)'),
+        crossAlign: z.enum(['min', 'center', 'max', 'baseline', 'start', 'end']).optional().default('min').describe('Alignment sumbu silang (cross-axis)'),
+        sizingH: z.enum(['fixed', 'hug', 'fill']).optional().default('fill').describe('Perilaku ukuran horizontal'),
+        sizingV: z.enum(['fixed', 'hug', 'fill']).optional().default('hug').describe('Perilaku ukuran vertikal'),
+        bgColor: z.string().optional().describe('Warna latar solid hex (contoh: #1E293B)'),
+        borderColor: z.string().optional().describe('Warna border hex (contoh: #374151)'),
+        borderWidth: z.number().optional().describe('Ketebalan border pixel'),
+        cornerRadius: z.number().optional().describe('Radius sudut kelengkungan (border-radius)')
+      })
+    },
+    async (params) => {
+      try {
+        const res = await client.createAutoLayoutFrame(params as any);
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `✅ Kontainer Auto-Layout "${params.name}" (${params.direction}) berhasil dibuat! (ID: ${res.id})`
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal membuat kontainer Auto-Layout: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 4: High-Level UI Component Generator
+  registerWithAliases(
+    ['figcraft_create_component', 'create_component'],
+    {
+      description:
+        'Hasilkan komponen UI terstruktur siap pakai tanpa layer berantakan: "navbar" (logo + links + cta), "hero" (badge + multiline display + subtitle + cta buttons), atau "card" (media placeholder + tag + title + body + price/cta).',
+      inputSchema: z.object({
+        type: z.enum(['navbar', 'hero', 'card']).describe('Tipe komponen yang dibuat'),
+        parent: z.number().describe('ID frame kontainer tempat komponen diletakkan'),
+        options: z.record(z.string(), z.any()).describe('Opsi komponen (title, subtitle, badge, brandName, links, price, ctaText, dll)')
+      })
+    },
+    async ({ type, parent, options }) => {
+      try {
+        const mergedOpts = { ...options, parent };
+        const res = await client.createComponent(type, mergedOpts);
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `✅ Komponen atomik "${type}" berhasil di-render di kanvas! (Root ID: ${res.id})`
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal menghasilkan komponen ${type}: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 5: Layout & Quality Audit (Harness Bridge)
+  registerWithAliases(
+    ['figcraft_audit_layout', 'audit_layout'],
+    {
+      description:
+        'Audit kualitas layout kanvas secara otomatis untuk mendeteksi layer berantakan (flat layers tanpa Auto-Layout), teks dengan karakter \\n escaped mentah, serta kelengkapan artboard responsif. Menghasilkan skor kualitas dan payload bukti untuk Harness MCP quality checkpoints.',
+      inputSchema: z.object({})
+    },
+    async () => {
+      try {
+        const audit = await client.auditLayout();
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `📊 [Laporan Kualitas Desain Kanvas FigCraft]:\n` +
+                `- Skor Kualitas: ${audit.score}/100 (${audit.passed ? '✅ LOLOS' : '⚠️ BUTUH PERBAIKAN'})\n` +
+                `- Total Node: ${audit.totalNodes}\n` +
+                `- Kontainer Auto-Layout: ${audit.autoLayoutFrameCount}\n` +
+                `- Layer Primitif Tak Terbungkus (Spaghetti): ${audit.flatRootChildrenCount}\n` +
+                `- Cakupan Responsif: Desktop=${audit.responsiveArtboards.desktopFound ? '✅' : '❌'}, Tablet=${audit.responsiveArtboards.tabletFound ? '✅' : '❌'}, Mobile=${audit.responsiveArtboards.mobileFound ? '✅' : '❌'}\n\n` +
+                `📋 Pelanggaran Terdeteksi (${audit.violations.length}):\n` +
+                (audit.violations.length === 0
+                  ? 'Tidak ada pelanggaran! Layout bersih, terstruktur, dan responsif.\n'
+                  : audit.violations.map((v, i) => `${i + 1}. [${v.severity.toUpperCase()}] ${v.message}\n   💡 Saran: ${v.recommendation}`).join('\n')) +
+                `\n\n🛡️ [Bukti Kesiapan Harness MCP]:\n${JSON.stringify(audit.harnessEvidence, null, 2)}`
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal mengaudit layout kanvas: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 6: Create Node (Live Canvas Generation)
   registerWithAliases(
     ['figcraft_create_node', 'create_node'],
     {
       description:
-        'Langkah 3 Kanonik: Gambar elemen visual (frame, rectangle, text, ellipse, button, dll) secara LIVE langsung di kanvas yang sedang terbuka.',
+        'Langkah 3 Kanonik: Gambar elemen visual (frame, rectangle, text, ellipse, button, dll) secara LIVE langsung di kanvas yang sedang terbuka dengan pembersihan otomatis karakter \\n.',
       inputSchema: z.object({
         type: z
           .enum(['frame', 'rectangle', 'ellipse', 'text', 'section', 'vector', 'component', 'line', 'arrow', 'star', 'polygon'])
@@ -96,8 +222,8 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         y: z.number().optional().describe('Posisi Y relatif terhadap parent'),
         width: z.number().optional().describe('Lebar layer dalam pixel'),
         height: z.number().optional().describe('Tinggi layer dalam pixel'),
-        text: z.string().optional().describe('Isi teks (jika type = text)'),
-        props: z.record(z.string(), z.any()).optional().describe('Properti visual: fills, strokes, cornerRadius, fontSize, fontFamily, fontWeight (angka, e.g. 700), layout, gap, padding, dll.')
+        text: z.string().optional().describe('Isi teks (jika type = text, otomatis disanitasi dari literal \\n)'),
+        props: z.record(z.string(), z.any()).optional().describe('Properti visual: fills, strokes, cornerRadius, fontSize, fontFamily, fontWeight, layout, gap, padding, dll.')
       })
     },
     async (params) => {
@@ -121,7 +247,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 4: Set Properties
+  // Tool 7: Set Properties
   registerWithAliases(
     ['figcraft_set_properties', 'set_properties'],
     {
@@ -152,7 +278,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 5: Batch Execution
+  // Tool 8: Batch Execution
   registerWithAliases(
     ['figcraft_batch', 'batch'],
     {
@@ -189,7 +315,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 6: Inspect Document
+  // Tool 9: Inspect Document
   registerWithAliases(
     ['figcraft_inspect_document', 'inspect_document'],
     {
@@ -220,7 +346,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 7: Save File
+  // Tool 10: Save File
   registerWithAliases(
     ['figcraft_save_file', 'save_file'],
     {
@@ -250,11 +376,11 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 8: Screenshot / Export
+  // Tool 11: Screenshot / Export
   registerWithAliases(
     ['figcraft_screenshot', 'screenshot'],
     {
-      description: 'Ambil snapshot visual kanvas aktif atau frame tertentu dalam format PNG.',
+      description: 'Ambil snapshot visual kanvas aktif atau frame tertentu dalam format PNG untuk bukti Harness quality gate.',
       inputSchema: z.object({
         ids: z.array(z.number()).optional().describe('ID frame spesifik untuk diekspor (opsional, default: seluruh halaman)'),
         scale: z.number().optional().default(1).describe('Skala resolusi render (default: 1)')
@@ -281,7 +407,7 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
     }
   );
 
-  // Tool 9: Ensure GUI Live Window
+  // Tool 12: Ensure GUI Live Window
   registerWithAliases(
     ['figcraft_ensure_gui', 'ensure_gui'],
     {
@@ -304,6 +430,36 @@ export function createFigCraftServer(client: FigCraftClient = new FigCraftClient
         return {
           isError: true,
           content: [{ type: 'text', text: `❌ FigCraft GUI gagal diaktifkan: ${msg}` }]
+        };
+      }
+    }
+  );
+
+  // Tool 13: Open File
+  registerWithAliases(
+    ['figcraft_open_file', 'open_file'],
+    {
+      description: 'Buka berkas desain (.figcraft, .json, .fig, .sketch, .svg, gambar) ke tab aktif di GUI FigCraft.',
+      inputSchema: z.object({
+        filePath: z.string().describe('Path berkas yang akan dibuka')
+      })
+    },
+    async ({ filePath }) => {
+      try {
+        const res = await client.openFile(filePath);
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `✅ Berkas berhasil dibuka di FigCraft GUI: ${filePath}\nDetail: ${JSON.stringify(res)}`
+            }
+          ]
+        };
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `❌ Gagal membuka file: ${msg}` }]
         };
       }
     }

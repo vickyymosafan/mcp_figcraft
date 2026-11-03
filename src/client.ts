@@ -3,7 +3,29 @@ import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { execSync, spawn } from 'node:child_process';
 import { createCanonicalFigCraftFile } from './template.js';
-import type { CreateNodeParams, FigCraftNodeProps, FigCraftResponse } from './types.js';
+import {
+  buildAutoLayoutNodeParams,
+  normalizeCrossAlign,
+  normalizeMainAlign,
+  sanitizeText
+} from './layout.js';
+import {
+  createCardComponent,
+  createHeroComponent,
+  createNavbarComponent,
+  createResponsiveArtboards,
+  type ResponsiveArtboardsOptions
+} from './components.js';
+import { auditCanvasDocument } from './audit.js';
+import type {
+  AutoLayoutFrameParams,
+  CreateNodeParams,
+  DocumentSummary,
+  FigCraftNodeProps,
+  FigCraftResponse,
+  LayoutAuditReport,
+  ResponsiveSystemResult
+} from './types.js';
 
 export const DEFAULT_CONTROL_PORT = 9099;
 export const DEFAULT_GUI_PATH = 'C:\\Program Files\\ArtCraft\\FigCraft\\figcraft.exe';
@@ -152,21 +174,96 @@ export class FigCraftClient {
     return this.executeEngineCommand('file.open', { path: resolved });
   }
 
+  /**
+   * Creates a canvas node with automatic text sanitization and alignment normalization.
+   */
   public async createNode(params: CreateNodeParams) {
-    return this.executeEngineCommand<{ id: number }>('node.create', params as unknown as Record<string, unknown>);
+    const normalizedParams: Record<string, unknown> = { ...params };
+
+    // 1. Text Sanitization: Prevent literal "\n" bugs
+    if (typeof params.text === 'string') {
+      normalizedParams.text = sanitizeText(params.text);
+    }
+    if (typeof params.characters === 'string') {
+      normalizedParams.characters = sanitizeText(params.characters);
+    }
+
+    // 2. Normalization of Auto-Layout alignments
+    if (params.props) {
+      const normalizedProps: Record<string, unknown> = { ...params.props };
+      if (params.props.mainAlign) {
+        normalizedProps.mainAlign = normalizeMainAlign(params.props.mainAlign as any);
+      }
+      if (params.props.crossAlign) {
+        normalizedProps.crossAlign = normalizeCrossAlign(params.props.crossAlign as any);
+      }
+      normalizedParams.props = normalizedProps;
+    }
+
+    return this.executeEngineCommand<{ id: number }>('node.create', normalizedParams);
+  }
+
+  /**
+   * Creates an Auto-Layout container with flexbox mechanics (vertical/horizontal, gap, padding, alignment).
+   */
+  public async createAutoLayoutFrame(params: AutoLayoutFrameParams): Promise<{ id: number }> {
+    const nodeParams = buildAutoLayoutNodeParams(params);
+    return this.createNode(nodeParams);
+  }
+
+  /**
+   * Generates synchronized responsive artboards (Desktop 1440, Tablet 768, Mobile 375).
+   */
+  public async createResponsiveSystem(options?: ResponsiveArtboardsOptions): Promise<ResponsiveSystemResult> {
+    return createResponsiveArtboards(this, options);
+  }
+
+  /**
+   * Creates atomic UI components with nested Auto-Layout structures.
+   */
+  public async createComponent(type: 'navbar' | 'hero' | 'card', options: Record<string, unknown>): Promise<{ id: number }> {
+    if (type === 'navbar') {
+      const res = await createNavbarComponent(this, options as any);
+      return { id: res.containerId };
+    }
+    if (type === 'hero') {
+      const res = await createHeroComponent(this, options as any);
+      return { id: res.containerId };
+    }
+    if (type === 'card') {
+      const res = await createCardComponent(this, options as any);
+      return { id: res.cardId };
+    }
+    throw new Error(`Tipe komponen "${type}" tidak didukung. Pilihan: 'navbar', 'hero', 'card'.`);
   }
 
   public async setProperties(id: number, props: FigCraftNodeProps) {
-    return this.executeEngineCommand('node.set', { id, props });
+    const normalizedProps: Record<string, unknown> = { ...props };
+    if (props.mainAlign) {
+      normalizedProps.mainAlign = normalizeMainAlign(props.mainAlign as any);
+    }
+    if (props.crossAlign) {
+      normalizedProps.crossAlign = normalizeCrossAlign(props.crossAlign as any);
+    }
+    return this.executeEngineCommand('node.set', { id, props: normalizedProps });
   }
 
   public async batch(commands: Array<{ command: string; params: Record<string, unknown> }>) {
     return this.executeEngineCommand('batch', { commands });
   }
 
-  public async inspectDocument(depth: number = 4, allPages: boolean = false) {
+  public async inspectDocument(depth: number = 4, allPages: boolean = false): Promise<DocumentSummary> {
     await this.ensureRunning();
-    return this.sendCommand('document.inspect', { depth, allPages });
+    return this.sendCommand<DocumentSummary>('document.inspect', { depth, allPages });
+  }
+
+  /**
+   * Runs an automated design and layout quality audit on the active canvas.
+   * Checks for flat layers, unescaped text strings, and responsive coverage.
+   */
+  public async auditLayout(): Promise<LayoutAuditReport> {
+    const doc = await this.inspectDocument(6, true);
+    return auditCanvasDocument(doc);
   }
 
   public async saveFile(targetPath?: string) {
